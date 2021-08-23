@@ -6,24 +6,26 @@ import NoMatch from "./components/NoMatch";
 import Admin from "./components/admin/Admin";
 import AdminProductos from "./components/admin/AdminProductos";
 import AdminCategorys from "./components/admin/AdminCategorys";
+import Login from "./components/Login";
 
 function App() {
-	return (
-		<BrowserRouter>
-			<div className="App">
-				<Switch>
-					<Route exact path="/">
-						<Redirect to="/admin" />
-					</Route>
-					{/* <PrivateRoute exact path="/login" component={Login} /> */}
-					<Route exact path="/admin" component={Admin} />
-					<Route path="/admin/categorias" component={AdminCategorys} />
-					<Route path="/admin/productos" component={AdminProductos} />
-					<Route component={NoMatch} />
-				</Switch>
-			</div>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
+          {/* <PrivateRoute exact path="/login" component={Login} /> */}
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/admin" component={Admin} />
+          <Route path="/admin/categorias" component={AdminCategorys} />
+          <Route path="/admin/productos" component={AdminProductos} />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

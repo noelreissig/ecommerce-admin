@@ -1,17 +1,18 @@
 function authReducer(state = { token: "" }, action) {
-	switch (action.type) {
-		case "LOGIN_REQUEST":
-			return {
-				token: action.payload,
-			};
+  switch (action.type) {
+    case "TOKEN_USER":
+      return {
+        ...state,
+        token: action.payload,
+      };
 
-		case "LOGOUT_REQUEST":
-			return {
-				token: "",
-			};
+    case "LOGOUT_REQUEST":
+      return {
+        token: "",
+      };
 
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 }
 export default authReducer;
