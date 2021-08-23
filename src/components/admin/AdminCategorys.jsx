@@ -41,8 +41,6 @@ function AdminCategorys() {
                         <i class="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
-                  </tbody>
-                  <tbody>
                     <tr className="text-center">
                       <td className="text-center">2</td>
                       <td>Living</td>
@@ -53,8 +51,6 @@ function AdminCategorys() {
                         <i class="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
-                  </tbody>
-                  <tbody>
                     <tr className="text-center">
                       <td className="text-center">3</td>
                       <td>Dormitorio</td>
@@ -65,8 +61,6 @@ function AdminCategorys() {
                         <i class="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
-                  </tbody>
-                  <tbody>
                     <tr className="text-center">
                       <td className="text-center">4</td>
                       <td>Jardin</td>
@@ -77,8 +71,6 @@ function AdminCategorys() {
                         <i class="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
-                  </tbody>
-                  <tbody>
                     <tr className="text-center">
                       <td className="text-center">5</td>
                       <td>Complementos</td>
