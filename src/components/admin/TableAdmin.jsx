@@ -24,7 +24,7 @@ const TableAdmin = ({ products }) => {
             <tr className="text-center">
               <td>{product.id}</td>
               <td className="text-left">{product.name}</td>
-              <td>{product.categoryId}</td>
+              <td>{product.category.name}</td>
               <td>{product.price}</td>
               <td>{product.stock}</td>
               <td>
