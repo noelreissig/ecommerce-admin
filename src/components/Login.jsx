@@ -21,8 +21,8 @@ function Login() {
   };
   return (
     <div className="container">
-      <div className="row d-flex justify-content-center">
-        <div className="col-md-3">
+      <div className="row mx-3 d-flex justify-content-center">
+        <div className="col-md-3 ">
           <form
             enctype="multipart/form-data"
             onSubmit={(e) => {

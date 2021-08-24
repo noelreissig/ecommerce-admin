@@ -1,8 +1,9 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import tableStyles from "./tableStyles.module.css";
 
-const TableAdmin = () => {
+const TableAdmin = ({ products }) => {
   return (
     <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
       <Table striped bordered hover>
@@ -19,76 +20,28 @@ const TableAdmin = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="text-center">
-            <td className="text-center">1</td>
-            <td>Mesa de 4</td>
-            <td>Otto</td>
-            <td>Comedor</td>
-            <td>USD 500</td>
-            <td>5</td>
-            <td>
-              <i class="fas fa-edit"></i>
-            </td>
-            <td>
-              <i class="far fa-trash-alt btn btn-white"></i>
-            </td>
-          </tr>
-          <tr className="text-center">
-            <td className="text-center">1</td>
-            <td>Mesa de 4</td>
-            <td>Otto</td>
-            <td>Comedor</td>
-            <td>USD 500</td>
-            <td>5</td>
-            <td>
-              <i class="fas fa-edit"></i>
-            </td>
-            <td>
-              <i class="far fa-trash-alt  btn btn-white"></i>
-            </td>
-          </tr>
-          <tr className="text-center">
-            <td className="text-center">1</td>
-            <td>Mesa de 4</td>
-            <td>Otto</td>
-            <td>Comedor</td>
-            <td>USD 500</td>
-            <td>5</td>
-            <td>
-              <i class="fas fa-edit"></i>
-            </td>
-            <td>
-              <i class="far fa-trash-alt  btn btn-white"></i>
-            </td>
-          </tr>
-          <tr className="text-center">
-            <td className="text-center">1</td>
-            <td>Mesa de 4</td>
-            <td>Otto</td>
-            <td>Comedor</td>
-            <td>USD 500</td>
-            <td>5</td>
-            <td>
-              <i class="fas fa-edit"></i>
-            </td>
-            <td>
-              <i class="far fa-trash-alt  btn btn-white"></i>
-            </td>
-          </tr>
-          <tr className="text-center">
-            <td className="text-center">1</td>
-            <td>Mesa de 4</td>
-            <td>Otto</td>
-            <td>Comedor</td>
-            <td>USD 500</td>
-            <td>5</td>
-            <td>
-              <i class="fas fa-edit"></i>
-            </td>
-            <td>
-              <i class="far fa-trash-alt  btn btn-white"></i>
-            </td>
-          </tr>
+          {products.map((product) => (
+            <tr className="text-center">
+              <td>{product.id}</td>
+              <td className="text-left">{product.name}</td>
+              <td>{product.categoryId}</td>
+              <td>{product.price}</td>
+              <td>{product.stock}</td>
+              <td>
+                {product.stared ? (
+                  <i className="fas fa-star"></i>
+                ) : (
+                  <i className="far fa-star"></i>
+                )}
+              </td>
+              <td>
+                <i className="fas fa-edit"></i>
+              </td>
+              <td>
+                <i className="far fa-trash-alt btn btn-white"></i>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

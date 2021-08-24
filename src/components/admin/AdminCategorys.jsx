@@ -35,50 +35,50 @@ function AdminCategorys() {
                       <td className="text-center">1</td>
                       <td>Comedor</td>
                       <td>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                       </td>
                       <td>
-                        <i class="far fa-trash-alt btn btn-white"></i>
+                        <i className="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
                     <tr className="text-center">
                       <td className="text-center">2</td>
                       <td>Living</td>
                       <td>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                       </td>
                       <td>
-                        <i class="far fa-trash-alt btn btn-white"></i>
+                        <i className="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
                     <tr className="text-center">
                       <td className="text-center">3</td>
                       <td>Dormitorio</td>
                       <td>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                       </td>
                       <td>
-                        <i class="far fa-trash-alt btn btn-white"></i>
+                        <i className="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
                     <tr className="text-center">
                       <td className="text-center">4</td>
                       <td>Jardin</td>
                       <td>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                       </td>
                       <td>
-                        <i class="far fa-trash-alt btn btn-white"></i>
+                        <i className="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
                     <tr className="text-center">
                       <td className="text-center">5</td>
                       <td>Complementos</td>
                       <td>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                       </td>
                       <td>
-                        <i class="far fa-trash-alt btn btn-white"></i>
+                        <i className="far fa-trash-alt btn btn-white"></i>
                       </td>
                     </tr>
                   </tbody>
