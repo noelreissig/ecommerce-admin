@@ -5,7 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import NoMatch from "./components/NoMatch";
 import Admin from "./components/admin/Admin";
 import AdminProductos from "./components/admin/AdminProductos";
-import AdminCategorys from "./components/admin/AdminCategorys";
+import AdminCategorys from "./components/admin/AdminCategories/AdminCategorys";
 import ClientUser from "./components/admin/ClientUsers/ClientUser";
 import AdminUser from "./components/admin/AdminUsers/AdminUser";
 import Login from "./components/Login";
