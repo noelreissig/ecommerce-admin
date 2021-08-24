@@ -42,6 +42,7 @@ const AdminUser = () => {
         <NavComponent />
         <div className="container min-vh-100">
           <h2 className={`${adminUser.admin} text-center`}>
+<<<<<<< Updated upstream
            Administrador
           </h2>
           <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
@@ -52,6 +53,12 @@ const AdminUser = () => {
           </div>
           <div className="row px-0">
             <div className="col-md-3 w-auto d-none d-lg-block">
+=======
+            Gestion de Categorias
+          </h2>
+          <div className="row px-0">
+            <div className="col-md-3 w-auto ">
+>>>>>>> Stashed changes
               <SiderAdmin />
             </div>
             <div className="col-md-9 ">
@@ -77,7 +84,11 @@ const AdminUser = () => {
                           <td>{user.lastname}</td>
                           <td>{user.email}</td>
                           <td>
+<<<<<<< Updated upstream
                             <i class="fas fa-edit"></i>
+=======
+                            <i className="fas fa-edit"></i>
+>>>>>>> Stashed changes
                           </td>
                           <td>
                             <i
@@ -85,7 +96,11 @@ const AdminUser = () => {
                                 setUserId(user.id);
                                 handleDelete();
                               }}
+<<<<<<< Updated upstream
                               class="far fa-trash-alt btn btn-white"
+=======
+                              className="far fa-trash-alt btn btn-white"
+>>>>>>> Stashed changes
                             ></i>
                           </td>
                         </tr>
@@ -93,6 +108,10 @@ const AdminUser = () => {
                     })}
                   </tbody>
                 </Table>
+<<<<<<< Updated upstream
+=======
+                <button className="btn btn-success ">Agregar categoría</button>
+>>>>>>> Stashed changes
               </div>
             </div>
           </div>

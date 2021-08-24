@@ -2,8 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import tableStyles from "./tableStyles.module.css";
+import ModalAddProduct from "../ModalAddProduct";
 
 const TableAdmin = ({ products }) => {
+  // const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
       <Table striped bordered hover>
@@ -21,7 +25,7 @@ const TableAdmin = ({ products }) => {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr className="text-center">
+            <tr className="text-center" key={product.id}>
               <td>{product.id}</td>
               <td className="text-left">{product.name}</td>
               <td>{product.category.name}</td>
@@ -35,7 +39,7 @@ const TableAdmin = ({ products }) => {
                 )}
               </td>
               <td>
-                <i className="fas fa-edit"></i>
+                <i className="fas fa-edit" onClick={handleShow}></i>
               </td>
               <td>
                 <i className="far fa-trash-alt btn btn-white"></i>
@@ -44,6 +48,7 @@ const TableAdmin = ({ products }) => {
           ))}
         </tbody>
       </Table>
+      <ModalAddProduct />
     </div>
   );
 };

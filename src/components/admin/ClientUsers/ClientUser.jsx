@@ -78,7 +78,7 @@ const ClientUser = () => {
                           <td>{client.phone}</td>
                           <td>{client.address}</td>
                           <td>
-                            <i class="fas fa-edit"></i>
+                            <i className="fas fa-edit"></i>
                           </td>
                           <td>
                             <i
@@ -86,7 +86,7 @@ const ClientUser = () => {
                                 setClientId(client.id);
                                 handleDelete();
                               }}
-                              class="far fa-trash-alt btn btn-white"
+                              className="far fa-trash-alt btn btn-white"
                             ></i>
                           </td>
                         </tr>

@@ -27,10 +27,13 @@ function App() {
           <Route path="/admin/productos" component={AdminProductos} />
           <Route path="/admin/clients" component={ClientUser} />
           <Route path="/admin/users" component={AdminUser} />
+<<<<<<< Updated upstream
           <Route
             path="/admin/categorias/editar"
             component={AdminEditCategory}
           />
+=======
+>>>>>>> Stashed changes
           <Route component={NoMatch} />
         </Switch>
       </div>

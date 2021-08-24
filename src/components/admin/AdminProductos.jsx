@@ -4,10 +4,16 @@ import TableAdmin from "./TableAdmin";
 import SiderAdmin from "./SiderAdmin";
 import adminStyles from "./admin.module.css";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-function AdminProductos() {
+function AdminProducts() {
+  const { token } = useSelector((state) => state.authReducer);
+
   const [products, setProducts] = useState([]);
+  // const [productId, setProductId] = useState([]);
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get(`http://localhost:3001/api/product`);
@@ -16,6 +22,14 @@ function AdminProductos() {
     getProducts();
   }, []);
   console.log(products);
+
+  // async function handleDelete() {
+  //   await axios.delete(`http://localhost:3001/api/products/${productId}`, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  // }
 
   return (
     <div>
@@ -26,10 +40,14 @@ function AdminProductos() {
             <h2 className={`${adminStyles.admin} mb-0`}>
               Gestion de Productos
             </h2>
+
             <button className="btn btn-success mb-2">Agregar Producto</button>
-            <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
-              Volver a Menu
-            </button>
+
+            <Link to="">
+              <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
+                Volver a Menu
+              </button>
+            </Link>
           </div>
         </div>
         <div className="row px-0">
@@ -46,4 +64,4 @@ function AdminProductos() {
     </div>
   );
 }
-export default AdminProductos;
+export default AdminProducts;
