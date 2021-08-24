@@ -44,12 +44,17 @@ const ClientUser = () => {
           <h2 className={`${clientUser.admin} text-center`}>
             Gestion de Clientes
           </h2>
+          <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
+            Volver a Menu
+          </button>
+          <div className="d-flex justify-content-center">
+            <button className="btn btn-success mb-3 ">Agregar cliente</button>
+          </div>
           <div className="row px-0">
-            <div className="col-md-3 w-auto">
+            <div className="col-md-3 w-auto d-none d-lg-block">
               <SiderAdmin />
             </div>
             <div className="col-md-9">
-              <button className="btn btn-success">Agregar cliente</button>
               <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
                 <Table striped bordered hover>
                   <thead>

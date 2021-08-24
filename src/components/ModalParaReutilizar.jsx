@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 
-function ModalAdmin() {
+function AdminEditCategory() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -66,4 +66,4 @@ function ModalAdmin() {
   );
 }
 
-export default ModalAdmin;
+export default AdminEditCategory;

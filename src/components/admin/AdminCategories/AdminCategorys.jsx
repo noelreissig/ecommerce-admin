@@ -6,32 +6,45 @@ import tableStyles from "../tableStyles.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import AdminEditCategory from "./AdminEditCategory";
 
 function AdminCategorys() {
   const { token } = useSelector((state) => state.authReducer);
   const [categories, setCategories] = useState([]);
-  // const [categoriesId, setCategoriesId] = useState("");
+  const [show, setShow] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [category, setCategory] = useState({});
+
+  const handleShow = () => {
+    setShow(true);
+  };
 
   useEffect(() => {
     const getCategories = async () => {
-      const response = await axios.get(`http://localhost:3001/api/category`, {
+      const response = await axios({
+        method: "get",
+        url: `http://localhost:3001/api/category`,
         headers: {
-          authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       setCategories(response.data);
+      setRefresh(false);
     };
     getCategories();
-  }, []);
-  console.log(categories);
+  }, [refresh]);
 
-  // async function handleDelete() {
-  // 	await axios.delete(`http://localhost:3001/api/product/${categoriesId}`, {
-  // 		// headers: {
-  // 		// 	Authorization: `Bearer ${token}`,
-  // 		// },
-  // 	});
-  // }
+  async function handleDelete(id) {
+    await axios.delete(`http://localhost:3001/api/category/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setCategories((categories) =>
+      categories.filter((category) => category.id !== id)
+    );
+  }
 
   return (
     <div>
@@ -40,15 +53,19 @@ function AdminCategorys() {
           <h2 className={`${adminCategory.admin} text-center`}>
             Gestion de Categorias
           </h2>
-          <button className="btn btn-success">Agregar categoría</button>
+          <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
+            Volver a Menu
+          </button>
+          <div className="d-flex justify-content-center">
+            <button className="btn btn-success mb-3 ">Agregar categoría</button>
+          </div>
+
           <div className="row px-0">
-            <div className="col-md-3">
+            <div className="col-md-3 w-auto d-none d-lg-block">
               <SiderAdmin />
             </div>
             <div className="col-md-9 ">
-              <div
-                className={`${tableStyles.font} pb-2 table-responsive-md `}
-              >
+              <div className={`${tableStyles.font} pb-2 table-responsive-md `}>
                 <Table striped bordered hover>
                   <thead>
                     <tr className="text-center ">
@@ -65,19 +82,33 @@ function AdminCategorys() {
                         <td className="text-center">{category.id}</td>
                         <td>{category.name}</td>
                         <td>
-                          <i className="fas fa-edit"></i>
+                          <i
+                            onClick={() => {
+                              handleShow();
+                              setCategory(category);
+                              console.log("Soy el click", category.name);
+                            }}
+                            className="fas fa-edit"
+                          ></i>
                         </td>
                         <td>
-                          <i
-                            // onClick={() => {
-                            //   setCategoriesId(categories.id);
-                            //   handleDelete();
-                            // }}
-                            className="far fa-trash-alt btn btn-white"
-                          ></i>
+                          <button className="btn">
+                            <i
+                              onClick={() => {
+                                handleDelete(category.id);
+                              }}
+                              className="far fa-trash-alt btn btn-white"
+                            ></i>
+                          </button>
                         </td>
                       </tr>
                     ))}
+                    <AdminEditCategory
+                      category={category}
+                      show={show}
+                      setShow={setShow}
+                      setRefresh={setRefresh}
+                    />
                   </tbody>
                 </Table>
               </div>
