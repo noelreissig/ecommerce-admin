@@ -39,6 +39,7 @@ const TableAdmin = ({ products, setRefresh }) => {
       products.filter((product) => product.id !== id)
     );
   }
+
   return (
     <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
       <Table striped bordered hover>
@@ -55,44 +56,46 @@ const TableAdmin = ({ products, setRefresh }) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr className="text-center" key={product.id}>
-              <td>{product.id}</td>
-              <td className="text-left">{product.name}</td>
-              <td>{product.category.name}</td>
-              <td>{product.price}</td>
-              <td>{product.stock}</td>
-              <td>
-                <button
-                  onClick={() => handleStared(product.id, !product.stared)}
-                >
-                  {product.stared === false ? (
-                    <i className="far fa-star"></i>
-                  ) : (
-                    <i className="fas fa-star"></i>
-                  )}
-                </button>
-              </td>
-              <td>
-                <i
-                  className="fas fa-edit"
-                  onClick={() => {
-                    handleShow();
-                    setProduct(product);
-                    console.log("Soy el click de editar", product.name);
-                  }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  onClick={() => {
-                    handleDelete(product.id);
-                  }}
-                  className="far fa-trash-alt btn btn-white"
-                ></i>
-              </td>
-            </tr>
-          ))}
+          {products &&
+            products.map((product) => (
+              <tr className="text-center" key={product.id}>
+                <td>{product.id}</td>
+                <td className="text-left">{product.name}</td>
+                <td>{product.category.name}</td>
+                <td>{product.price}</td>
+                <td>{product.stock}</td>
+                <td>
+                  <button
+                    className="btn"
+                    onClick={() => handleStared(product.id, !product.stared)}
+                  >
+                    {product.stared === false ? (
+                      <i className="far fa-heart text-danger"></i>
+                    ) : (
+                      <i className="fas fa-heart text-danger"></i>
+                    )}
+                  </button>
+                </td>
+                <td>
+                  <i
+                    className="fas fa-edit"
+                    onClick={() => {
+                      handleShow();
+                      setProduct(product);
+                      console.log("Soy el click de editar", product.name);
+                    }}
+                  ></i>
+                </td>
+                <td>
+                  <i
+                    onClick={() => {
+                      handleDelete(product.id);
+                    }}
+                    className="far fa-trash-alt btn btn-white"
+                  ></i>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </Table>
       <ModalEditProduct

@@ -4,21 +4,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function EditProduct({ product, show, setShow, setRefresh }) {
+  console.log("soy el console log de");
+  console.log(product);
   // const [editProduct, setEditProduct] = useState(false);
   const [stared, setStared] = useState(false);
-  const [editProduct, setEditProduct] = useState(product.name);
+  const [editName, setEditName] = useState(product.name);
+  // const [editPrice, setEditPrice] = useState(product.price);
 
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    setEditProduct(product.name);
+    setEditName(product.name);
   }, [product.name]);
 
   async function handleUpdate(id) {
     await axios({
       method: "patch",
       url: `http://localhost:3001/api/product/${id}`,
-      data: { name: editProduct },
+      data: { name: editName },
+      //
       // headers: {
       //   Authorization: `Bearer ${token}`,
       // },
@@ -35,27 +39,66 @@ function EditProduct({ product, show, setShow, setRefresh }) {
           </Modal.Header>
           <Form.Group className="mx-3" controlId="formBasicText">
             <Form.Label className="my-1">Nombre de Producto</Form.Label>
-            <Form.Control size="sm" type="name" />
+            <Form.Control
+              size="sm"
+              type="name"
+              value={editName}
+              onChange={(ev) => setEditName(ev.target.value)}
+            />
           </Form.Group>
+
           <Form.Group className="mx-3" controlId="formBasicText">
             <Form.Label className="my-1">Categoría</Form.Label>
-            <Form.Control size="sm" type="name" />
+            <select>
+              <option
+                value={product && product.category.id}
+                key={product && product.category.id}
+              >
+                {product && product.category.name}
+              </option>
+            </select>
+            {/* <Form.Control
+              size="sm"
+              type="name"
+              value={editCategory}
+              onChange={(ev) => setEditCategory(ev.target.value)}
+            /> */}
           </Form.Group>
-          <Form.Group className=" mx-3" controlId="formBasicText">
+          <Form.Group className="mx-3" controlId="formBasicText">
             <Form.Label className="my-1">Descripción</Form.Label>
-            <Form.Control size="sm" type="text" />
+            <Form.Control
+              size="sm"
+              type="text"
+              // value={editDescription}
+              // onChange={(ev) => setEditDescription(ev.target.value)}
+            />
           </Form.Group>
           <Form.Group className=" mx-3" controlId="formBasicNumber">
             <Form.Label className="my-1">Characteristics</Form.Label>
-            <Form.Control size="sm" type="number" />
+            <Form.Control
+              size="sm"
+              type="number"
+              // value={editCharacteristics}
+              // onChange={(ev) => setEditCharacteristics(ev.target.value)}
+            />
           </Form.Group>
           <Form.Group className=" mx-3" controlId="formBasicNumber">
             <Form.Label className="my-1">Precio</Form.Label>
-            <Form.Control size="sm" type="number" />
+            <Form.Control
+              size="sm"
+              type="number"
+              // value={editPrice}
+              // onChange={(ev) => setEditPrice(ev.target.value)}
+            />
           </Form.Group>
           <Form.Group className=" mx-3" controlId="formBasicNumber">
             <Form.Label className="my-1">Stock</Form.Label>
-            <Form.Control size="sm" type="number" />
+            <Form.Control
+              size="sm"
+              type="number"
+              // value={editStock}
+              // onChange={(ev) => setEditStock(ev.target.value)}
+            />
           </Form.Group>
           <Form.Group className=" mx-3" controlId="formBasicNumber">
             <Form.Label className="my-1">Destacado</Form.Label>
@@ -64,8 +107,8 @@ function EditProduct({ product, show, setShow, setRefresh }) {
                 className="form-check-input"
                 type="checkbox"
                 id="flexSwitchCheckChecked"
-                checked={stared}
-                onClick={() => setStared((prev) => !prev)}
+                //   checked={stared}
+                //   onClick={() => setStared((prev) => !prev)}
               />
               <label
                 className="form-check-label"
@@ -95,7 +138,13 @@ function EditProduct({ product, show, setShow, setRefresh }) {
             required
           ></input>
           <Modal.Footer>
-            <Button variant="success" onClick={handleClose}>
+            <Button
+              variant="success"
+              onClick={() => {
+                handleUpdate(product.id);
+                handleClose();
+              }}
+            >
               Guardar cambios
             </Button>
             <Button variant="secondary" onClick={handleClose}>

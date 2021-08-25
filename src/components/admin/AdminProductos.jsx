@@ -23,6 +23,10 @@ function AdminProducts() {
     getProducts();
   }, [refresh]);
 
+  //dentro del handleCreate
+  //llamada al back para .store
+  //pasar todos los datos en la data
+
   return (
     <div>
       <NavComponent />
