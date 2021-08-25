@@ -2,11 +2,16 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AdminEditCategory({ category, show, setShow, setRefresh }) {
   //const { token } = useSelector((state) => state.authReducer);
   const [editCategory, setEditCategory] = useState(category.name);
+  // console.log(category.name);
+
+  useEffect(() => {
+    setEditCategory(category.name);
+  }, [category.name]);
 
   async function handleUpdate(id) {
     await axios({
@@ -28,13 +33,13 @@ function AdminEditCategory({ category, show, setShow, setRefresh }) {
           <Modal.Header closeButton className="btn btn-white">
             <Modal.Title>Editar Categoría</Modal.Title>
           </Modal.Header>
-          <Form.Group className=" mx-3 my-3" controlId="formBasicText">
+          <Form.Group className="mx-3 my-3" controlId="formBasicText">
             <Form.Label className="">Nombre</Form.Label>
             <Form.Control
               className="mb-4"
               size="sm"
               type="name"
-              value={`${editCategory}`}
+              value={editCategory}
               onChange={(ev) => setEditCategory(ev.target.value)}
               placeholder="Ingrese el nuevo nombre..."
             />

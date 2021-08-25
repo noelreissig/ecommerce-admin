@@ -2,12 +2,43 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import tableStyles from "./tableStyles.module.css";
-import ModalAddProduct from "../ModalAddProduct";
+import ModalEditProduct from "../ModalEditProduct";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
-const TableAdmin = ({ products }) => {
-  // const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const TableAdmin = ({ products, setRefresh }) => {
+  const { token } = useSelector((state) => state.authReducer);
+  const [show, setShow] = useState(false);
+  const [product, setProduct] = useState({});
+  const [productsList, setProductsList] = useState([]);
 
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  async function handleStared(id, isStared) {
+    await axios.patch(
+      `http://localhost:3001/api/product/${id}`,
+      { stared: isStared ? 1 : 0 },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    setRefresh(true);
+  }
+
+  async function handleDelete(id) {
+    await axios.delete(`http://localhost:3001/api/product/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setProductsList((products) =>
+      products.filter((product) => product.id !== id)
+    );
+  }
   return (
     <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
       <Table striped bordered hover>
@@ -32,23 +63,44 @@ const TableAdmin = ({ products }) => {
               <td>{product.price}</td>
               <td>{product.stock}</td>
               <td>
-                {product.stared ? (
-                  <i className="fas fa-star"></i>
-                ) : (
-                  <i className="far fa-star"></i>
-                )}
+                <button
+                  onClick={() => handleStared(product.id, !product.stared)}
+                >
+                  {product.stared === false ? (
+                    <i className="far fa-star"></i>
+                  ) : (
+                    <i className="fas fa-star"></i>
+                  )}
+                </button>
               </td>
               <td>
-                <i className="fas fa-edit" onClick={handleShow}></i>
+                <i
+                  className="fas fa-edit"
+                  onClick={() => {
+                    handleShow();
+                    setProduct(product);
+                    console.log("Soy el click de editar", product.name);
+                  }}
+                ></i>
               </td>
               <td>
-                <i className="far fa-trash-alt btn btn-white"></i>
+                <i
+                  onClick={() => {
+                    handleDelete(product.id);
+                  }}
+                  className="far fa-trash-alt btn btn-white"
+                ></i>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <ModalAddProduct />
+      <ModalEditProduct
+        product={product}
+        show={show}
+        setShow={setShow}
+        setRefresh={setRefresh}
+      />
     </div>
   );
 };

@@ -64,18 +64,17 @@ function AdminCategorys() {
             <div className="col-md-3 w-auto d-none d-lg-block">
               <SiderAdmin />
             </div>
-            <div className="col-md-9 ">
+            <div className="col-md-9">
               <div className={`${tableStyles.font} pb-2 table-responsive-md `}>
                 <Table striped bordered hover>
                   <thead>
-                    <tr className="text-center ">
+                    <tr className="text-center">
                       <th>Id</th>
                       <th>Categorias</th>
                       <th>Editar</th>
                       <th>Borrar</th>
                     </tr>
                   </thead>
-
                   <tbody>
                     {categories.map((category) => (
                       <tr className="text-center">

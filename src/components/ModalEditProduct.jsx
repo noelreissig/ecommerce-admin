@@ -1,21 +1,37 @@
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function AddProduct() {
-  const [show, setShow] = useState(false);
+function EditProduct({ product, show, setShow, setRefresh }) {
+  // const [editProduct, setEditProduct] = useState(false);
+  const [stared, setStared] = useState(false);
+  const [editProduct, setEditProduct] = useState(product.name);
+
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    setEditProduct(product.name);
+  }, [product.name]);
+
+  async function handleUpdate(id) {
+    await axios({
+      method: "patch",
+      url: `http://localhost:3001/api/product/${id}`,
+      data: { name: editProduct },
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+    setRefresh(true);
+  }
+
   return (
     <div>
       <>
-        <Button variant="light" onClick={handleShow}>
-          <i className="fas fa-edit"></i>
-        </Button>
-
         <Modal show={show} onHide={handleClose} enctype="multipart/form-data">
           <Modal.Header closeButton>
-            <Modal.Title>Agregar Producto</Modal.Title>
+            <Modal.Title>Modificar Producto</Modal.Title>
           </Modal.Header>
           <Form.Group className="mx-3" controlId="formBasicText">
             <Form.Label className="my-1">Nombre de Producto</Form.Label>
@@ -33,11 +49,31 @@ function AddProduct() {
             <Form.Label className="my-1">Characteristics</Form.Label>
             <Form.Control size="sm" type="number" />
           </Form.Group>
-          <Form.Group className=" mx-3" controlId="formBasicEmail">
-            <Form.Label className="my-1">Email</Form.Label>
-            <Form.Control size="sm" type="email" />
+          <Form.Group className=" mx-3" controlId="formBasicNumber">
+            <Form.Label className="my-1">Precio</Form.Label>
+            <Form.Control size="sm" type="number" />
           </Form.Group>
-
+          <Form.Group className=" mx-3" controlId="formBasicNumber">
+            <Form.Label className="my-1">Stock</Form.Label>
+            <Form.Control size="sm" type="number" />
+          </Form.Group>
+          <Form.Group className=" mx-3" controlId="formBasicNumber">
+            <Form.Label className="my-1">Destacado</Form.Label>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckChecked"
+                checked={stared}
+                onClick={() => setStared((prev) => !prev)}
+              />
+              <label
+                className="form-check-label"
+                for="flexSwitchCheckChecked"
+              ></label>
+            </div>
+            <Form.Control size="sm" type="number" />
+          </Form.Group>
           <Form.Label className="my-1 mx-3">Imágen 1</Form.Label>
           <input
             className="form-control my-1 mx-3 w-auto mb-4"
@@ -72,4 +108,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default EditProduct;

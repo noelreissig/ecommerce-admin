@@ -10,39 +10,29 @@ import { Link } from "react-router-dom";
 
 function AdminProducts() {
   const { token } = useSelector((state) => state.authReducer);
-
   const [products, setProducts] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   // const [productId, setProductId] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get(`http://localhost:3001/api/product`);
       setProducts(response.data);
+      setRefresh(false);
     };
     getProducts();
-  }, []);
-  console.log(products);
-
-  // async function handleDelete() {
-  //   await axios.delete(`http://localhost:3001/api/products/${productId}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  // }
+  }, [refresh]);
 
   return (
     <div>
       <NavComponent />
       <div className="container min-vh-100">
         <div className="row ">
-          <div className="col text-center ">
+          <div className="col text-center">
             <h2 className={`${adminStyles.admin} mb-0`}>
               Gestion de Productos
             </h2>
-
             <button className="btn btn-success mb-2">Agregar Producto</button>
-
             <Link to="">
               <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
                 Volver a Menu
@@ -55,11 +45,10 @@ function AdminProducts() {
             <SiderAdmin />
           </div>
           <div className="col-md-9 text-center">
-            <TableAdmin products={products} />
+            <TableAdmin products={products} setRefresh={setRefresh} />
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
