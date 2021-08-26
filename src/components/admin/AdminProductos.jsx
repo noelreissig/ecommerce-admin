@@ -23,6 +23,7 @@ function AdminProducts() {
     getProducts();
   }, [refresh]);
 
+  //para que cree un nuevo producto
   //dentro del handleCreate
   //llamada al back para .store
   //pasar todos los datos en la data
@@ -31,7 +32,7 @@ function AdminProducts() {
     <div>
       <NavComponent />
       <div className="container min-vh-100">
-        <div className="row ">
+        <div className="row">
           <div className="col text-center">
             <h2 className={`${adminStyles.admin} mb-0`}>
               Gestion de Productos

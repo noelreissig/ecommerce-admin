@@ -82,7 +82,6 @@ const TableAdmin = ({ products, setRefresh }) => {
                     onClick={() => {
                       handleShow();
                       setProduct(product);
-                      console.log("Soy el click de editar", product.name);
                     }}
                   ></i>
                 </td>
@@ -99,6 +98,7 @@ const TableAdmin = ({ products, setRefresh }) => {
         </tbody>
       </Table>
       <ModalEditProduct
+        key={product.id}
         product={product}
         show={show}
         setShow={setShow}
