@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 function AdminEditCategory({ category, show, setShow, setRefresh }) {
   //const { token } = useSelector((state) => state.authReducer);
   const [editCategory, setEditCategory] = useState(category.name);
-  // console.log(category.name);
 
   useEffect(() => {
     setEditCategory(category.name);
@@ -41,7 +40,6 @@ function AdminEditCategory({ category, show, setShow, setRefresh }) {
               type="name"
               value={editCategory}
               onChange={(ev) => setEditCategory(ev.target.value)}
-              placeholder="Ingrese el nuevo nombre..."
             />
           </Form.Group>
 

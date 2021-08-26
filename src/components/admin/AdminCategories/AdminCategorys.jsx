@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AdminEditCategory from "./AdminEditCategory";
+import AdminCreateCategory from "./AdminCreateCategory";
 
 function AdminCategorys() {
   const { token } = useSelector((state) => state.authReducer);
@@ -16,10 +17,18 @@ function AdminCategorys() {
   const [refresh, setRefresh] = useState(false);
   const [category, setCategory] = useState({});
 
+  const [newCategory, setNewCategory] = useState({});
+  const [showCreate, setShowCreate] = useState(false);
+
   const handleShow = () => {
     setShow(true);
   };
 
+  const handleShowCreate = () => {
+    setShowCreate(true);
+  };
+
+  // Todas las categorías
   useEffect(() => {
     const getCategories = async () => {
       const response = await axios({
@@ -35,6 +44,7 @@ function AdminCategorys() {
     getCategories();
   }, [refresh]);
 
+  // Eliminar categoría
   async function handleDelete(id) {
     await axios.delete(`http://localhost:3001/api/category/${id}`, {
       headers: {
@@ -57,7 +67,22 @@ function AdminCategorys() {
             Volver a Menu
           </button>
           <div className="d-flex justify-content-center">
-            <button className="btn btn-success mb-3 ">Agregar categoría</button>
+            <button
+              className="btn btn-success mb-3 "
+              onClick={() => {
+                handleShowCreate();
+                setNewCategory(newCategory);
+                console.log("click modal");
+              }}
+            >
+              Agregar categoría
+            </button>
+            <AdminCreateCategory
+              newCategory={newCategory}
+              showCreate={showCreate}
+              setShowCreate={setShowCreate}
+              setRefresh={setRefresh}
+            />
           </div>
 
           <div className="row px-0">
