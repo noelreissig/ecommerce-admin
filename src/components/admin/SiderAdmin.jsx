@@ -3,92 +3,92 @@ import { Link } from "react-router-dom";
 import siderAdminStyles from "./SiderAdmin.module.css";
 
 function SiderAdmin() {
-  return (
-    <div className="d-flex align-items-center">
-      <div className="row">
-        <div className="col-md-3 w-auto text-center">
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
-          >
-            <Link to="/admin" className={siderAdminStyles.Link}>
-              <span className={siderAdminStyles.subtitulo}>
-                Home{" "}
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-home ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
-          >
-            <Link to="/admin/categorias" className={siderAdminStyles.Link}>
-              <span className={siderAdminStyles.subtitulo}>
-                Categorias{" "}
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-layer-group ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
-          >
-            <Link to="/admin/productos" className={siderAdminStyles.Link}>
-              <span className={`${siderAdminStyles.subtitulo} px-2`}>
-                Productos
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-tags ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow `}
-          >
-            <Link to="/admin/productos" className={siderAdminStyles.Link}>
-              <span className={`${siderAdminStyles.subtitulo} px-2`}>
-                Ordenes
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-shopping-cart ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
-          >
-            <Link to="/admin/clients" className={siderAdminStyles.Link}>
-              <span className={`${siderAdminStyles.subtitulo} px-2`}>
-                Clientes
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-user ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-          <div
-            className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
-          >
-            <Link to="/admin/users" className={siderAdminStyles.Link}>
-              <span className={`${siderAdminStyles.subtitulo} px-2`}>
-                Admin
-                <i
-                  className={`${siderAdminStyles.iconos} fas fa-users-cog ps-2`}
-                ></i>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="d-flex align-items-center">
+			<div className="row">
+				<div className="col-md-3 w-auto text-center">
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
+					>
+						<Link to="/admin" className={siderAdminStyles.Link}>
+							<span className={siderAdminStyles.subtitulo}>
+								Home{" "}
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-home ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
+					>
+						<Link to="/admin/categorias" className={siderAdminStyles.Link}>
+							<span className={siderAdminStyles.subtitulo}>
+								Categorias{" "}
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-layer-group ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
+					>
+						<Link to="/admin/productos" className={siderAdminStyles.Link}>
+							<span className={`${siderAdminStyles.subtitulo} px-2`}>
+								Productos
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-tags ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow `}
+					>
+						<Link to="/admin/ordenes" className={siderAdminStyles.Link}>
+							<span className={`${siderAdminStyles.subtitulo} px-2`}>
+								Ordenes
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-shopping-cart ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
+					>
+						<Link to="/admin/clients" className={siderAdminStyles.Link}>
+							<span className={`${siderAdminStyles.subtitulo} px-2`}>
+								Clientes
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-user ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+					<div
+						className={`${siderAdminStyles.borderBox} ms-2 mb-3 p-1 rounded shadow`}
+					>
+						<Link to="/admin/users" className={siderAdminStyles.Link}>
+							<span className={`${siderAdminStyles.subtitulo} px-2`}>
+								Admin
+								<i
+									className={`${siderAdminStyles.iconos} fas fa-users-cog ps-2`}
+								></i>
+							</span>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default SiderAdmin;
 
 {
-  /* <div className="container text-center mt-5">
+	/* <div className="container text-center mt-5">
       <h2 className="mb-5">Panel de control</h2>
 
       <div className="row d-flex justify-content-around">

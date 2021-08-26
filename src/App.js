@@ -11,31 +11,33 @@ import AdminUser from "./components/admin/AdminUsers/AdminUser";
 import AdminEditCategory from "./components/admin/AdminCategories/AdminEditCategory";
 
 import Login from "./components/Login";
+import AdminOrder from "./components/admin/AdminOrders/AdminOrder";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
-          {/* <PrivateRoute exact path="/login" component={Login} /> */}
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/admin" component={Admin} />
-          <Route path="/admin/categorias" component={AdminCategorys} />
-          <Route path="/admin/productos" component={AdminProducts} />
-          <Route path="/admin/clients" component={ClientUser} />
-          <Route path="/admin/users" component={AdminUser} />
-          <Route
-            path="/admin/categorias/editar"
-            component={AdminEditCategory}
-          />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<div className="App">
+				<Switch>
+					<Route exact path="/">
+						<Redirect to="/login" />
+					</Route>
+					{/* <PrivateRoute exact path="/login" component={Login} /> */}
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/admin" component={Admin} />
+					<Route path="/admin/categorias" component={AdminCategorys} />
+					<Route path="/admin/productos" component={AdminProducts} />
+					<Route path="/admin/ordenes" component={AdminOrder} />
+					<Route path="/admin/clients" component={ClientUser} />
+					<Route path="/admin/users" component={AdminUser} />
+					<Route
+						path="/admin/categorias/editar"
+						component={AdminEditCategory}
+					/>
+					<Route component={NoMatch} />
+				</Switch>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;
