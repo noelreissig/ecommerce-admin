@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function EditProduct({ product, show, setShow, setRefresh }) {
+  const [editCategory, setEditCategory] = useState(product.categoryId);
   const [stared, setStared] = useState(false);
   const [categories, setCategories] = useState([]);
   const [editName, setEditName] = useState(product.name);
   const [editDescription, setEditDescription] = useState(product.description);
   const [editPrice, setEditPrice] = useState(product.price);
   const [editStock, setEditStock] = useState(product.stock);
-  const [editCategory, setEditCategory] = useState(product.category.id);
   const handleClose = () => setShow(false);
 
   useEffect(() => {
