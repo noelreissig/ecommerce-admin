@@ -4,24 +4,40 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function EditProduct({ product, show, setShow, setRefresh }) {
-  console.log("soy el console log de");
-  console.log(product);
-  // const [editProduct, setEditProduct] = useState(false);
   const [stared, setStared] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [editName, setEditName] = useState(product.name);
-  // const [editPrice, setEditPrice] = useState(product.price);
-
+  const [editDescription, setEditDescription] = useState(product.description);
+  const [editPrice, setEditPrice] = useState(product.price);
+  const [editStock, setEditStock] = useState(product.stock);
+  const [editCategory, setEditCategory] = useState(product.category.id);
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    setEditName(product.name);
-  }, [product.name]);
+    async function getCategories() {
+      const response = await axios({
+        method: "get",
+        url: `http://localhost:3001/api/category`,
+      });
+      setCategories(response.data);
+    }
+    getCategories();
+    // setEditDescription(product.description);
+    // setEditPrice(product.price);
+    // setEditStock(product.stock);
+  }, [product]);
 
   async function handleUpdate(id) {
     await axios({
       method: "patch",
       url: `http://localhost:3001/api/product/${id}`,
-      data: { name: editName },
+      data: {
+        name: editName,
+        description: editDescription,
+        price: editPrice,
+        stock: editStock,
+        categoryId: editCategory,
+      },
       //
       // headers: {
       //   Authorization: `Bearer ${token}`,
@@ -37,8 +53,8 @@ function EditProduct({ product, show, setShow, setRefresh }) {
           <Modal.Header closeButton>
             <Modal.Title>Modificar Producto</Modal.Title>
           </Modal.Header>
-          <Form.Group className="mx-3" controlId="formBasicText">
-            <Form.Label className="my-1">Nombre de Producto</Form.Label>
+          <Form.Group className="m-3" controlId="formBasicText">
+            <Form.Label className="my-2">Nombre de Producto</Form.Label>
             <Form.Control
               size="sm"
               type="name"
@@ -48,47 +64,36 @@ function EditProduct({ product, show, setShow, setRefresh }) {
           </Form.Group>
 
           <Form.Group className="mx-3" controlId="formBasicText">
-            <Form.Label className="my-1">Categoría</Form.Label>
-            <select>
-              <option
-                value={product && product.category.id}
-                key={product && product.category.id}
-              >
-                {product && product.category.name}
-              </option>
+            <Form.Label className="my-2">Categoría Actual</Form.Label>
+            <select onChange={(ev) => setEditCategory(ev.target.value)}>
+              {categories.map((category) => (
+                <option
+                  value={category.id}
+                  key={category.id}
+                  selected={category.id == editCategory}
+                >
+                  {category.name}
+                </option>
+              ))}
             </select>
-            {/* <Form.Control
-              size="sm"
-              type="name"
-              value={editCategory}
-              onChange={(ev) => setEditCategory(ev.target.value)}
-            /> */}
           </Form.Group>
           <Form.Group className="mx-3" controlId="formBasicText">
             <Form.Label className="my-1">Descripción</Form.Label>
             <Form.Control
               size="sm"
               type="text"
-              // value={editDescription}
-              // onChange={(ev) => setEditDescription(ev.target.value)}
+              value={editDescription}
+              onChange={(ev) => setEditDescription(ev.target.value)}
             />
           </Form.Group>
-          <Form.Group className=" mx-3" controlId="formBasicNumber">
-            <Form.Label className="my-1">Characteristics</Form.Label>
-            <Form.Control
-              size="sm"
-              type="number"
-              // value={editCharacteristics}
-              // onChange={(ev) => setEditCharacteristics(ev.target.value)}
-            />
-          </Form.Group>
+
           <Form.Group className=" mx-3" controlId="formBasicNumber">
             <Form.Label className="my-1">Precio</Form.Label>
             <Form.Control
               size="sm"
               type="number"
-              // value={editPrice}
-              // onChange={(ev) => setEditPrice(ev.target.value)}
+              value={editPrice}
+              onChange={(ev) => setEditPrice(ev.target.value)}
             />
           </Form.Group>
           <Form.Group className=" mx-3" controlId="formBasicNumber">
@@ -96,27 +101,11 @@ function EditProduct({ product, show, setShow, setRefresh }) {
             <Form.Control
               size="sm"
               type="number"
-              // value={editStock}
-              // onChange={(ev) => setEditStock(ev.target.value)}
+              value={editStock}
+              onChange={(ev) => setEditStock(ev.target.value)}
             />
           </Form.Group>
-          <Form.Group className=" mx-3" controlId="formBasicNumber">
-            <Form.Label className="my-1">Destacado</Form.Label>
-            <div className="form-check form-switch">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="flexSwitchCheckChecked"
-                //   checked={stared}
-                //   onClick={() => setStared((prev) => !prev)}
-              />
-              <label
-                className="form-check-label"
-                for="flexSwitchCheckChecked"
-              ></label>
-            </div>
-            <Form.Control size="sm" type="number" />
-          </Form.Group>
+
           <Form.Label className="my-1 mx-3">Imágen 1</Form.Label>
           <input
             className="form-control my-1 mx-3 w-auto mb-4"
