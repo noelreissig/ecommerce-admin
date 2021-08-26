@@ -64,7 +64,7 @@ function EditProduct({ product, show, setShow, setRefresh }) {
           </Form.Group>
 
           <Form.Group className="mx-3" controlId="formBasicText">
-            <Form.Label className="my-2">Categoría Actual</Form.Label>
+            <Form.Label className="my-2 pe-2 pb-2">Categoría Actual</Form.Label>
             <select onChange={(ev) => setEditCategory(ev.target.value)}>
               {categories.map((category) => (
                 <option
