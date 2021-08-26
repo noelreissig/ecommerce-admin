@@ -1,7 +1,7 @@
-import Footer from "../Footer";
-import NavComponent from "../Navbar";
+import Footer from "../../Footer";
+import NavComponent from "../../Navbar";
 import TableAdmin from "./TableAdmin";
-import SiderAdmin from "./SiderAdmin";
+import SiderAdmin from "../SiderAdmin";
 import adminStyles from "./admin.module.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
