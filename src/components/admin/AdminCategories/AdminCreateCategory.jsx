@@ -11,8 +11,6 @@ function AdminCreateCategory({
   setRefresh,
 }) {
   const { token } = useSelector((state) => state.authReducer);
-  const [createCategory, setCreateCategory] = useState("");
-  const [imgCreateCategory, setImgCreateCategory] = useState();
 
   async function handleCreate(ev) {
     ev.preventDefault();
@@ -27,7 +25,7 @@ function AdminCreateCategory({
         Authorization: `Bearer ${token}`,
       },
     });
-    setCreateCategory("");
+
     setRefresh(true);
   }
 
@@ -53,8 +51,6 @@ function AdminCreateCategory({
               size="sm"
               type="name"
               name="name"
-              value={createCategory}
-              onChange={(ev) => setCreateCategory(ev.target.value)}
               placeholder="Ingrese nombre para la nueva categoría"
             />
             <Form.Label className="my-1 mx-3">Imágen</Form.Label>
@@ -63,9 +59,7 @@ function AdminCreateCategory({
               type="file"
               name="photo_url"
               accept="image/png, image/jpg, image/svg, image/webp"
-              // value={imgCreateCategory}
               multiple={false}
-              onChange={(ev) => setImgCreateCategory(ev.target.value[0])}
               required
             ></input>
           </Form.Group>
