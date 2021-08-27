@@ -7,12 +7,20 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AdminCreateProduct from "./AdminCreateProduct";
 
 function AdminProducts() {
   const { token } = useSelector((state) => state.authReducer);
   const [products, setProducts] = useState([]);
+  const [show, setShow] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  // const [productId, setProductId] = useState([]);
+  const [product, setProduct] = useState({});
+  const [newProduct, setNewProduct] = useState({});
+  const [showCreate, setShowCreate] = useState(false);
+
+  const handleShowCreate = () => {
+    setShowCreate(true);
+  };
 
   useEffect(() => {
     const getProducts = async () => {
@@ -35,12 +43,28 @@ function AdminProducts() {
         <div className="row">
           <div className="col text-center">
             <h2 className={`${adminStyles.admin} mb-0`}>
-              Gestion de Productos
+              Gestión de Productos
             </h2>
-            <button className="btn btn-success mb-2">Agregar Producto</button>
+            <button
+              className="btn btn-success mb-2"
+              onClick={() => {
+                handleShowCreate();
+                setNewProduct(newProduct);
+                // console.log("entre al modal de producto nuevo");
+              }}
+            >
+              Agregar Producto
+            </button>
+            <AdminCreateProduct
+              newProduct={newProduct}
+              showCreate={showCreate}
+              setShowCreate={setShowCreate}
+              setRefresh={setRefresh}
+              key={products.id}
+            />
             <Link to="">
-              <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
-                Volver a Menu
+              <button className="btn btn-outline-success d-block d-lg-none mx-auto mb-2">
+                Volver a Menú
               </button>
             </Link>
           </div>
