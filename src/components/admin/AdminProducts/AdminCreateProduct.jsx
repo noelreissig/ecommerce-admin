@@ -11,18 +11,7 @@ function AdminCreateProduct({
   setRefresh,
 }) {
   const { token } = useSelector((state) => state.authReducer);
-  // const [createProduct, setCreateProduct] = useState("");
-  // const [createDescription, setCreateDescription] = useState("");
-  // const [createDetails, setCreateDetails] = useState("");
-  // const [createPrice, setCreatePrice] = useState(0);
-  // const [img1CreateProduct, setImg1CreateProduct] = useState();
-  // const [img2CreateProduct, setImg2CreateProduct] = useState();
-  // const [createStock, setCreateStock] = useState(0);
-  // const [createStared, setCreateStared] = useState(0);
-  // const [createSlug, setCreateSlug] = useState("");
   const [categories, setCategories] = useState([]);
-
-  // const [imgCreateProduct, setImgCreateProduct] = useState();
 
   useEffect(() => {
     async function getCategories() {
@@ -112,7 +101,7 @@ function AdminCreateProduct({
                   name="picture_url"
                   accept="image/png, image/jpg, image/svg, image/webp"
                   // value=""
-                  multiple={false}
+                  multiple={true}
                   required
                 ></input>
               </div>
