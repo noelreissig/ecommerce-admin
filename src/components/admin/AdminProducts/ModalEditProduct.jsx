@@ -12,6 +12,7 @@ function EditProduct({ product, show, setShow, setRefresh }) {
   const [editDescription, setEditDescription] = useState(product.description);
   const [editPrice, setEditPrice] = useState(product.price);
   const [editStock, setEditStock] = useState(product.stock);
+  const [editSlug, setEditSlug] = useState(product.slug);
   const handleClose = () => setShow(false);
 
   useEffect(() => {
@@ -34,6 +35,8 @@ function EditProduct({ product, show, setShow, setRefresh }) {
         description: editDescription,
         price: editPrice,
         stock: editStock,
+        slug: editSlug,
+
         categoryId: editCategory,
       },
 
@@ -50,8 +53,8 @@ function EditProduct({ product, show, setShow, setRefresh }) {
         <Modal.Header closeButton>
           <Modal.Title>Modificar Producto</Modal.Title>
         </Modal.Header>
-        <Form.Group className="m-3" controlId="formBasicText">
-          <Form.Label className="my-2">Nombre de Producto</Form.Label>
+        <Form.Group className="m-3 text-start" controlId="formBasicText">
+          <Form.Label className="my-2 m-3">Nombre de Producto</Form.Label>
           <Form.Control
             size="sm"
             type="name"
@@ -79,8 +82,21 @@ function EditProduct({ product, show, setShow, setRefresh }) {
           <Form.Control
             size="sm"
             type="text"
+            as="textarea"
+            rows={5}
             value={editDescription}
             onChange={(ev) => setEditDescription(ev.target.value)}
+          />
+          <Form.Label className="">Ruta en Navegador ("slug")</Form.Label>
+          <Form.Control
+            placeholder={`Ejemplo: "mesa-ratona". (Texto sin las comillas)`}
+            className="mb-2 w-50"
+            size="sm"
+            type="name"
+            name="slug"
+            value={editSlug}
+            onChange={(ev) => setEditSlug(ev.target.value)}
+            required
           />
         </Form.Group>
 

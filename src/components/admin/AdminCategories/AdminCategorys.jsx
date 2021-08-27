@@ -72,7 +72,7 @@ function AdminCategorys() {
               onClick={() => {
                 handleShowCreate();
                 setNewCategory(newCategory);
-                console.log("click modal");
+                // console.log("click modal");
               }}
             >
               Agregar categoría
@@ -104,13 +104,13 @@ function AdminCategorys() {
                     {categories.map((category) => (
                       <tr className="text-center">
                         <td className="text-center">{category.id}</td>
-                        <td>{category.name}</td>
+                        <td className="text-start">{category.name}</td>
                         <td>
                           <i
                             onClick={() => {
                               handleShow();
                               setCategory(category);
-                              console.log("Soy el click", category.name);
+                              // console.log("Soy el click", category.name);
                             }}
                             className="fas fa-edit"
                           ></i>

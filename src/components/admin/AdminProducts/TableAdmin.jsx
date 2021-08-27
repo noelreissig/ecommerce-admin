@@ -60,7 +60,7 @@ const TableAdmin = ({ products, setRefresh }) => {
             products.map((product) => (
               <tr className="text-center" key={product.id}>
                 <td>{product.id}</td>
-                <td className="text-left">{product.name}</td>
+                <td className="text-start">{product.name}</td>
                 <td>{product.category.name}</td>
                 <td>{product.price}</td>
                 <td>{product.stock}</td>
