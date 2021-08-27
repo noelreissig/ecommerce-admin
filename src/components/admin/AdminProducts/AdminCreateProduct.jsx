@@ -154,16 +154,6 @@ function AdminCreateProduct({
                 </select>
               </div>
             </div>
-            {/* <Form.Label className="">Ruta en Navegador ("slug")</Form.Label>
-            <Form.Control
-              placeholder={`Ejemplo: "mesa-ratona". (Texto sin las comillas)`}
-              className="mb-2 w-50"
-              size="sm"
-              type="name"
-              name="slug"
-              // value=""
-              required
-            /> */}
             <Form.Label className="my-2 py-2 pe-2">
               Defina una categoría para su producto
             </Form.Label>

@@ -132,6 +132,7 @@ function AdminCategorys() {
                       show={show}
                       setShow={setShow}
                       setRefresh={setRefresh}
+                      key={category.name}
                     />
                   </tbody>
                 </Table>

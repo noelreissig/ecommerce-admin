@@ -26,133 +26,121 @@ function EditProduct({ product, show, setShow, setRefresh }) {
     getCategories();
   }, [product]);
 
-  async function handleUpdate(id) {
+  async function handleUpdate(ev) {
+    ev.preventDefault();
+    const formData = new FormData(ev.target);
     await axios({
       method: "patch",
-      url: `http://localhost:3001/api/product/${id}`,
-      data: {
-        name: editName,
-        description: editDescription,
-        price: editPrice,
-        stock: editStock,
-        // slug: editSlug,
-
-        categoryId: editCategory,
-      },
-
+      url: `http://localhost:3001/api/product/${product.id}`,
+      data: formData,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     setRefresh(true);
+    handleClose();
   }
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose} enctype="multipart/form-data">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modificar Producto</Modal.Title>
         </Modal.Header>
-        <Form.Group className="m-3 text-start" controlId="formBasicText">
-          <Form.Label className="my-2">Nombre de Producto</Form.Label>
-          <Form.Control
-            size="sm"
-            type="name"
-            value={editName}
-            onChange={(ev) => setEditName(ev.target.value)}
-          />
-        </Form.Group>
+        <form enctype="multipart/form-data" onSubmit={handleUpdate}>
+          <Form.Group className="m-3 text-start" controlId="formBasicText">
+            <Form.Label className="my-2">Nombre de Producto</Form.Label>
+            <Form.Control
+              size="sm"
+              type="text"
+              name="name"
+              value={editName}
+              onChange={(ev) => setEditName(ev.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group className="mx-3" controlId="formBasicText">
-          <Form.Label className="my-2 pe-2 pb-2">Categoría Actual</Form.Label>
-          <select onChange={(ev) => setEditCategory(ev.target.value)}>
-            {categories.map((category) => (
-              <option
-                value={category.id}
-                key={category.id}
-                selected={category.id == editCategory}
-              >
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </Form.Group>
-        <Form.Group className="mx-3" controlId="formBasicText">
-          <Form.Label className="my-1">Descripción</Form.Label>
-          <Form.Control
-            size="sm"
-            type="text"
-            as="textarea"
-            rows={5}
-            value={editDescription}
-            onChange={(ev) => setEditDescription(ev.target.value)}
-          />
-          {/* <Form.Label className="">Ruta en Navegador ("slug")</Form.Label>
-          <Form.Control
-            placeholder={`Ejemplo: "mesa-ratona". (Texto sin las comillas)`}
-            className="mb-2 w-50"
-            size="sm"
-            type="name"
-            name="slug"
-            value={editSlug}
-            onChange={(ev) => setEditSlug(ev.target.value)}
-            required
-          /> */}
-        </Form.Group>
+          <Form.Group className="mx-3" controlId="formBasicText">
+            <Form.Label className="my-2 pe-2 pb-2">Categoría Actual</Form.Label>
+            <select
+              onChange={(ev) => setEditCategory(ev.target.value)}
+              name="categoryId"
+            >
+              {categories.map((category) => (
+                <option
+                  value={category.id}
+                  key={category.id}
+                  selected={category.id == editCategory}
+                >
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </Form.Group>
+          <Form.Group className="mx-3" controlId="formBasicText">
+            <Form.Label className="my-1">Descripción</Form.Label>
+            <Form.Control
+              size="sm"
+              type="text"
+              name="descrption"
+              as="textarea"
+              rows={5}
+              value={editDescription}
+              onChange={(ev) => setEditDescription(ev.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group className="mx-3" controlId="formBasicNumber">
-          <Form.Label className="my-1">Precio</Form.Label>
-          <Form.Control
-            size="sm"
-            type="number"
-            value={editPrice}
-            onChange={(ev) => setEditPrice(ev.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mx-3" controlId="formBasicNumber">
-          <Form.Label className="my-1">Stock</Form.Label>
-          <Form.Control
-            size="sm"
-            type="number"
-            value={editStock}
-            onChange={(ev) => setEditStock(ev.target.value)}
-          />
-        </Form.Group>
+          <Form.Group className="mx-3" controlId="formBasicNumber">
+            <Form.Label className="my-1">Precio</Form.Label>
+            <Form.Control
+              size="sm"
+              type="number"
+              name="price"
+              value={editPrice}
+              onChange={(ev) => setEditPrice(ev.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mx-3" controlId="formBasicNumber">
+            <Form.Label className="my-1">Stock</Form.Label>
+            <Form.Control
+              size="sm"
+              type="number"
+              name="stock"
+              value={editStock}
+              onChange={(ev) => setEditStock(ev.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Label className="my-1 mx-3">Imágen 1</Form.Label>
-        <input
-          className="form-control my-1 mx-3 w-auto mb-4"
-          id="image"
-          placeholder="Ingrese imagen de producto"
-          name="image"
-          type="file"
-          accept="image/png, image/jpg, image/svg, image/webp"
-          required
-        ></input>
-        <Form.Label className="my-1 mx-3">Imágen 2</Form.Label>
-        <input
-          className="form-control my-1 mx-3 w-auto mb-4"
-          id="image"
-          placeholder="Ingrese imagen de producto"
-          name="image"
-          type="file"
-          accept="image/png, image/jpg, image/svg, image/webp"
-          required
-        ></input>
-        <Modal.Footer>
-          <Button
-            variant="success"
-            onClick={() => {
-              handleUpdate(product.id);
-              handleClose();
-            }}
-          >
-            Guardar cambios
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancelar
-          </Button>
-        </Modal.Footer>
+          <Form.Label className="my-1 mx-3">Imágen 1</Form.Label>
+          <input
+            className="form-control my-1 mx-3 w-auto mb-4"
+            id="image"
+            placeholder="Ingrese imagen de producto"
+            name="picture_url"
+            type="file"
+            accept="image/png, image/jpg, image/svg, image/webp"
+          ></input>
+          <Form.Label className="my-1 mx-3">Imágen 2</Form.Label>
+          <input
+            className="form-control my-1 mx-3 w-auto mb-4"
+            id="image"
+            placeholder="Ingrese imagen de producto"
+            name="picture_2_url"
+            type="file"
+            accept="image/png, image/jpg, image/svg, image/webp"
+          ></input>
+          <Modal.Footer>
+            <Button variant="success" type="submit">
+              Guardar cambios
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={handleClose}
+              onClick={handleUpdate}
+            >
+              Cancelar
+            </Button>
+          </Modal.Footer>
+        </form>
       </Modal>
     </div>
   );
