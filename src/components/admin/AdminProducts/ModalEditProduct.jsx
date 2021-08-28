@@ -110,28 +110,49 @@ function EditProduct({ product, show, setShow, setRefresh }) {
             />
           </Form.Group>
 
-          <Form.Label className="my-1 mx-3">Imágen 1</Form.Label>
-          <input
-            className="form-control my-1 mx-3 w-auto mb-4"
-            id="image"
-            placeholder="Ingrese imagen de producto"
-            name="picture_url"
-            type="file"
-            accept="image/png, image/jpg, image/svg, image/webp"
-          ></input>
-          <Form.Label className="my-1 mx-3">Imágen 2</Form.Label>
-          <input
-            className="form-control my-1 mx-3 w-auto mb-4"
-            id="image"
-            placeholder="Ingrese imagen de producto"
-            name="picture_2_url"
-            type="file"
-            accept="image/png, image/jpg, image/svg, image/webp"
-          ></input>
+          <div className="d-flex flex-row g-0 mt-3 ms-3">
+            <div className="d-flex row">
+              <Form.Label className="my-1 d-inline">Imágen 1</Form.Label>
+              <div classname="col-sm-6">
+                <img
+                  className="img-fluid w-25 mb-2 d-inline"
+                  src={`${process.env.REACT_APP_SUPABASE_URL_IMG}${product.picture_url}`}
+                  alt={product.name}
+                />
+                <input
+                  className="form-control w-75 mb-4 text-start"
+                  id="image"
+                  placeholder="Ingrese imagen de producto"
+                  name="picture_url"
+                  type="file"
+                  accept="image/png, image/jpg, image/svg, image/webp"
+                ></input>
+              </div>
+            </div>
+            <div className="d-flex row">
+              <Form.Label className="my-1 d-inline">Imágen 2</Form.Label>
+              <div classname="col-sm-6">
+                <img
+                  className="img-fluid w-25 mb-2 d-inline"
+                  src={`${process.env.REACT_APP_SUPABASE_URL_IMG}${product.picture_2_url}`}
+                  alt={product.name}
+                />
+                <input
+                  className="form-control w-75 mb-4 text-start"
+                  id="image"
+                  placeholder="Ingrese imagen de producto"
+                  name="picture_2_url"
+                  type="file"
+                  accept="image/png, image/jpg, image/svg, image/webp"
+                ></input>
+              </div>
+            </div>
+          </div>
           <Modal.Footer>
             <Button variant="success" type="submit">
               Guardar cambios
             </Button>
+
             <Button
               variant="secondary"
               onClick={handleClose}

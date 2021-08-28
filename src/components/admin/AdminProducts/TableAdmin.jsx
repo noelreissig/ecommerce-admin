@@ -17,15 +17,16 @@ const TableAdmin = ({ products, setRefresh }) => {
   };
 
   async function handleStared(id, isStared) {
-    await axios.patch(
-      `http://localhost:3001/api/product/${id}`,
-      { stared: isStared ? 1 : 0 },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const formData = new FormData();
+    formData.append("stared", isStared);
+    await axios({
+      method: "patch",
+      url: `http://localhost:3001/api/product/${id}`,
+      data: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     setRefresh(true);
   }
 
