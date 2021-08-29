@@ -1,5 +1,3 @@
-import Footer from "../../Footer";
-import NavComponent from "../../Navbar";
 import TableAdmin from "./TableAdmin";
 import SiderAdmin from "../SiderAdmin";
 import adminStyles from "./admin.module.css";
@@ -37,20 +35,23 @@ function AdminProducts() {
   //pasar todos los datos en la data
 
   return (
-    <div>
-      <NavComponent />
+    <div className={adminStyles.imgBackground}>
       <div className="container min-vh-100">
         <div className="row">
           <div className="col text-center">
-            <h2 className={`${adminStyles.admin} mb-0`}>
+            <h2 className={`${adminStyles.admin} mb-0 text-white`}>
               Gestión de Productos
             </h2>
+            <Link to="/admin" className="text-decoration-none">
+              <button className="btn btn-success d-block d-lg-none mx-auto mb-2 ">
+                Volver a Menú
+              </button>
+            </Link>
             <button
               className="btn btn-success mb-2"
               onClick={() => {
                 handleShowCreate();
                 setNewProduct(newProduct);
-                // console.log("entre al modal de producto nuevo");
               }}
             >
               Agregar Producto
@@ -62,11 +63,6 @@ function AdminProducts() {
               setRefresh={setRefresh}
               key={products.id}
             />
-            <Link to="">
-              <button className="btn btn-outline-success d-block d-lg-none mx-auto mb-2">
-                Volver a Menú
-              </button>
-            </Link>
           </div>
         </div>
         <div className="row px-0">
@@ -78,7 +74,6 @@ function AdminProducts() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

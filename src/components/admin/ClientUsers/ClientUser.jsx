@@ -1,12 +1,11 @@
 import React from "react";
-import Footer from "../../Footer";
-import NavComponent from "../../Navbar";
 import { Table } from "react-bootstrap";
 import SiderAdmin from "../SiderAdmin";
 import clientUser from "./clientUser.module.css";
 import tableStyles from "../tableStyles.module.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -38,15 +37,16 @@ const ClientUser = () => {
 
   return (
     <div>
-      <div>
-        <NavComponent />
+      <div className={clientUser.imgBackground}>
         <div className="container min-vh-100">
-          <h2 className={`${clientUser.admin} text-center`}>
+          <h2 className={`${clientUser.admin} text-center text-white`}>
             Gestion de Clientes
           </h2>
-          <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
-            Volver a Menu
-          </button>
+          <Link to="/admin" className="text-decoration-none">
+            <button className="btn btn-success d-block d-sm-none mx-auto mb-2 ">
+              Volver a Menú
+            </button>
+          </Link>
           <div className="d-flex justify-content-center">
             <button className="btn btn-success mb-3 ">Agregar cliente</button>
           </div>
@@ -55,7 +55,9 @@ const ClientUser = () => {
               <SiderAdmin />
             </div>
             <div className="col-md-9">
-              <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
+              <div
+                className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}
+              >
                 <Table striped bordered hover>
                   <thead>
                     <tr className="text-center">
@@ -78,7 +80,7 @@ const ClientUser = () => {
                           <td>{client.phone}</td>
                           <td>{client.address}</td>
                           <td>
-                            <i className="fas fa-edit"></i>
+                            <i className="fas fa-edit text-success"></i>
                           </td>
                           <td>
                             <i
@@ -86,7 +88,7 @@ const ClientUser = () => {
                                 setClientId(client.id);
                                 handleDelete();
                               }}
-                              className="far fa-trash-alt btn btn-white"
+                              className="far fa-trash-alt btn btn-white text-danger"
                             ></i>
                           </td>
                         </tr>
@@ -98,7 +100,6 @@ const ClientUser = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );

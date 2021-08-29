@@ -58,14 +58,17 @@ function AdminCategorys() {
 
   return (
     <div>
-      <div>
+      <div className={adminCategory.imgBackground}>
         <div className="container min-vh-100 w-auto">
-          <h2 className={`${adminCategory.admin} text-center`}>
+          <h2 className={`${adminCategory.admin} text-center text-white`}>
             Gestion de Categorias
           </h2>
-          <button className="btn btn-outline-success d-block d-sm-none mx-auto mb-2">
-            Volver a Menu
-          </button>
+          <Link to="/admin" className="text-decoration-none">
+            <button className="btn btn-success d-block d-sm-none mx-auto mb-2 ">
+              Volver a Menú
+            </button>
+          </Link>
+
           <div className="d-flex justify-content-center">
             <button
               className="btn btn-success mb-3 "
@@ -90,7 +93,9 @@ function AdminCategorys() {
               <SiderAdmin />
             </div>
             <div className="col-md-9">
-              <div className={`${tableStyles.font} pb-2 table-responsive-md `}>
+              <div
+                className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}
+              >
                 <Table striped bordered hover>
                   <thead>
                     <tr className="text-center">
@@ -104,7 +109,7 @@ function AdminCategorys() {
                     {categories.map((category) => (
                       <tr className="text-center">
                         <td className="text-center">{category.id}</td>
-                        <td className="text-start">{category.name}</td>
+                        <td className="text-center">{category.name}</td>
                         <td>
                           <i
                             onClick={() => {
@@ -112,7 +117,7 @@ function AdminCategorys() {
                               setCategory(category);
                               // console.log("Soy el click", category.name);
                             }}
-                            className="fas fa-edit"
+                            className="fas fa-edit text-success"
                           ></i>
                         </td>
                         <td>
@@ -121,7 +126,7 @@ function AdminCategorys() {
                               onClick={() => {
                                 handleDelete(category.id);
                               }}
-                              className="far fa-trash-alt btn btn-white"
+                              className="far fa-trash-alt btn btn-white text-danger"
                             ></i>
                           </button>
                         </td>

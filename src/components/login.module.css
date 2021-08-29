@@ -1,15 +1,20 @@
-.admin {
-  padding-top: 5rem;
-  padding-bottom: 1rem;
-  padding-left: 0;
+.loginFormContainer {
+  max-width: 400px;
 }
+.login {
+  font-size: 31px;
+  font-weight: 800;
+  font-style: inherit;
+  font-family: Verdana, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
 .imgBackground {
   background-image: linear-gradient(
       -45deg,
       rgba(130, 130, 130, 0.1516981792717087) 0%,
       rgba(0, 0, 0, 0.85) 100%
     ),
-    url(../../fondo.jpg);
+    url(../fondo.jpg);
 
   background-repeat: no-repeat;
   background-size: cover;

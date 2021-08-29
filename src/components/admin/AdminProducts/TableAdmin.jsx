@@ -42,7 +42,7 @@ const TableAdmin = ({ products, setRefresh }) => {
   }
 
   return (
-    <div className={`${tableStyles.font} pb-2 table-responsive-md`}>
+    <div className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}>
       <Table striped bordered hover>
         <thead>
           <tr className="text-center">
@@ -79,7 +79,7 @@ const TableAdmin = ({ products, setRefresh }) => {
                 </td>
                 <td>
                   <i
-                    className="fas fa-edit"
+                    className="fas fa-edit text-success"
                     onClick={() => {
                       handleShow();
                       setProduct(product);
@@ -91,7 +91,7 @@ const TableAdmin = ({ products, setRefresh }) => {
                     onClick={() => {
                       handleDelete(product.id);
                     }}
-                    className="far fa-trash-alt btn btn-white"
+                    className="far fa-trash-alt btn btn-white text-danger"
                   ></i>
                 </td>
               </tr>
