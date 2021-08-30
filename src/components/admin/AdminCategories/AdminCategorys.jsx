@@ -61,7 +61,7 @@ function AdminCategorys() {
       <div className={adminCategory.imgBackground}>
         <div className="container min-vh-100 w-auto">
           <h2 className={`${adminCategory.admin} text-center text-white`}>
-            Gestion de Categorias
+            Gestión de Categorías
           </h2>
           <Link to="/admin" className="text-decoration-none">
             <button className="btn btn-success d-block d-sm-none mx-auto mb-2 ">
@@ -107,7 +107,7 @@ function AdminCategorys() {
                   </thead>
                   <tbody>
                     {categories.map((category) => (
-                      <tr className="text-center">
+                      <tr className="text-center ">
                         <td className="text-center">{category.id}</td>
                         <td className="text-center">{category.name}</td>
                         <td>
@@ -117,16 +117,16 @@ function AdminCategorys() {
                               setCategory(category);
                               // console.log("Soy el click", category.name);
                             }}
-                            className="fas fa-edit text-success"
+                            className="fas fa-edit text-success "
                           ></i>
                         </td>
                         <td>
-                          <button className="btn">
+                          <button className="btn m-0 p-0">
                             <i
                               onClick={() => {
                                 handleDelete(category.id);
                               }}
-                              className="far fa-trash-alt btn btn-white text-danger"
+                              className="far fa-trash-alt text-danger"
                             ></i>
                           </button>
                         </td>

@@ -4,7 +4,7 @@ import siderAdminStyles from "./SiderAdmin.module.css";
 
 function SiderAdmin() {
   return (
-    <div className="d-flex align-items-center ">
+    <div className={`d-flex align-items-center`}>
       <div className="row">
         <div className="col-md-3 w-auto text-center">
           <div

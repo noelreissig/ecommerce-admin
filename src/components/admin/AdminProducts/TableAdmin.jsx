@@ -59,7 +59,7 @@ const TableAdmin = ({ products, setRefresh }) => {
         <tbody>
           {products &&
             products.map((product) => (
-              <tr className="text-center" key={product.id}>
+              <tr className="text-center align-center" key={product.id}>
                 <td>{product.id}</td>
                 <td className="text-start">{product.name}</td>
                 <td>{product.category.name}</td>
@@ -67,7 +67,7 @@ const TableAdmin = ({ products, setRefresh }) => {
                 <td>{product.stock}</td>
                 <td>
                   <button
-                    className="btn"
+                    className="btn m-0 p-0"
                     onClick={() => handleStared(product.id, !product.stared)}
                   >
                     {product.stared === false ? (
@@ -91,7 +91,7 @@ const TableAdmin = ({ products, setRefresh }) => {
                     onClick={() => {
                       handleDelete(product.id);
                     }}
-                    className="far fa-trash-alt btn btn-white text-danger"
+                    className="far fa-trash-alt btn text-danger"
                   ></i>
                 </td>
               </tr>

@@ -47,7 +47,7 @@ function EditProduct({ product, show, setShow, setRefresh }) {
         <Modal.Header closeButton>
           <Modal.Title>Modificar Producto</Modal.Title>
         </Modal.Header>
-        <form enctype="multipart/form-data" onSubmit={handleUpdate}>
+        <Form enctype="multipart/form-data" onSubmit={handleUpdate}>
           <Form.Group className="m-3 text-start" controlId="formBasicText">
             <Form.Label className="my-2">Nombre de Producto</Form.Label>
             <Form.Control
@@ -153,15 +153,11 @@ function EditProduct({ product, show, setShow, setRefresh }) {
               Guardar cambios
             </Button>
 
-            <Button
-              variant="secondary"
-              onClick={handleClose}
-              onClick={handleUpdate}
-            >
+            <Button variant="secondary" onClick={handleClose}>
               Cancelar
             </Button>
           </Modal.Footer>
-        </form>
+        </Form>
       </Modal>
     </div>
   );

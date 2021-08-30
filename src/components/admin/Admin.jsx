@@ -10,11 +10,11 @@ function Admin() {
           <h2 className={`${adminStyles.admin} text-center text-white`}>
             Administración Deco-Hack
           </h2>
-          <div className="row px-0 py-5">
-            <div className="col-md-3 w-auto ">
+          <div className={`${adminStyles.menuResponsive} row px-0 py-5`}>
+            <div className="col-md-3 w-auto">
               <SiderAdmin />
             </div>
-            <div class="col-sm-6 col-lg-3 ms-5">
+            <div class="col-sm-6 col-lg-3 ms-5 d-none d-lg-block">
               <div class="card border-0 text-white bg-primary">
                 <div class="card-body">
                   <div class="text-value">132</div>
@@ -30,13 +30,13 @@ function Admin() {
                   </div>
 
                   <small class="text-white">
-                    868 more until next milestone.
+                    868 más para la próxima meta.
                   </small>
                 </div>
               </div>
               <hr className="text-white" />
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3 d-none d-lg-block">
               {" "}
               <div class="card border-0 text-white bg-success">
                 <div class="card-body">
@@ -54,15 +54,15 @@ function Admin() {
                     ></div>
                   </div>
 
-                  <small class="text-white">Great! Don't stop.</small>
+                  <small class="text-white">Genial! No paren!</small>
                 </div>
               </div>
               <hr className="text-white" />
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-lg-3 d-none d-lg-block">
               <div class="card border-0 text-white bg-warning">
                 <div class="card-body">
-                  <div class="text-value">28 days</div>
+                  <div class="text-value">28 días</div>
 
                   <div>Ventas en el último mes.</div>
 
@@ -77,7 +77,7 @@ function Admin() {
                   </div>
 
                   <small class="text-white">
-                    Post an article every 3-4 days.
+                    Publica un artículo en 3-4 días.
                   </small>
                 </div>
               </div>

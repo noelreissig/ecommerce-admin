@@ -40,7 +40,7 @@ const AdminOrder = () => {
       <div className={adminOrder.imgBackground}>
         <div className="container min-vh-100">
           <h2 className={`${adminOrder.admin} text-center text-white`}>
-            Gestion de Ordenes
+            Gestión de órdenes
           </h2>
           <Link to="/admin" className="text-decoration-none">
             <button className="btn btn-success d-block d-lg-none mx-auto mb-2 ">
@@ -50,26 +50,22 @@ const AdminOrder = () => {
 
           <div className="row px-0">
             <div className="col-md-3 w-auto d-none d-lg-block">
-              Administrador
-            </div>
-          </div>
-          <div className="row px-0">
-            <div className="col-md-3 w-auto d-none d-lg-block">
               <SiderAdmin />
             </div>
             <div className="col-md-9 ">
               <div
-                className={`${tableStyles.font} pb-2 table-responsive-md bg-white text-white`}
+                className={`${tableStyles.font} table-responsive-md bg-white`}
               >
                 <Table striped bordered hover>
                   <thead>
                     <tr className="text-center ">
                       <th>Id</th>
+                      <th>Fecha Compra</th>
                       <th>Fecha Entrega</th>
                       <th>Direccion</th>
                       <th>Cliente</th>
                       <th>Cant Items</th>
-                      <th>Editar</th>
+                      <th>Estado</th>
                       <th>Borrar</th>
                     </tr>
                   </thead>
@@ -81,6 +77,11 @@ const AdminOrder = () => {
                           <td className="text-center">{order.id}</td>
                           <td>
                             {moment(order.deliveryDate).format("MMM Do YY")}
+                          </td>
+                          <td>
+                            {moment(order.createdAt)
+                              .add(3, "days")
+                              .format("MMM Do YY")}
                           </td>
                           <td>{order.deliveryAddress}</td>
                           <td>
@@ -94,7 +95,15 @@ const AdminOrder = () => {
                             )}
                           </td>
                           <td>
-                            <i className="fas fa-edit text-success"></i>
+                            <select>
+                              <option className="text-danger">Pendiente</option>
+                              <option className="text-success">
+                                En proceso
+                              </option>
+                              <option className="text-primary">
+                                Entregado
+                              </option>
+                            </select>
                           </td>
                           <td>
                             <i
@@ -102,7 +111,7 @@ const AdminOrder = () => {
                                 // setUserId(user.id);
                                 handleDelete(order.id);
                               }}
-                              className="far fa-trash-alt btn btn-white text-danger"
+                              className="far fa-trash-alt btn text-danger"
                             ></i>
                           </td>
                         </tr>

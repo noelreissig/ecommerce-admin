@@ -39,7 +39,7 @@ function AdminProducts() {
       <div className="container min-vh-100">
         <div className="row">
           <div className="col text-center">
-            <h2 className={`${adminStyles.admin} mb-0 text-white`}>
+            <h2 className={`${adminStyles.admin} text-center text-white`}>
               Gestión de Productos
             </h2>
             <Link to="/admin" className="text-decoration-none">
@@ -48,7 +48,7 @@ function AdminProducts() {
               </button>
             </Link>
             <button
-              className="btn btn-success mb-2"
+              className="btn btn-success mb-3"
               onClick={() => {
                 handleShowCreate();
                 setNewProduct(newProduct);
