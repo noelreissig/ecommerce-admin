@@ -64,7 +64,7 @@ function AdminCategorys() {
             Gestión de Categorías
           </h2>
           <Link to="/admin" className="text-decoration-none">
-            <button className="btn btn-success d-block d-sm-none mx-auto mb-2 ">
+            <button className="btn btn-success d-block d-sm-none mx-auto mb-2">
               Volver a Menú
             </button>
           </Link>
@@ -94,7 +94,7 @@ function AdminCategorys() {
             </div>
             <div className="col-md-9">
               <div
-                className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}
+                className={`${tableStyles.font} table-responsive-md bg-white`}
               >
                 <Table striped bordered hover>
                   <thead>
@@ -107,7 +107,7 @@ function AdminCategorys() {
                   </thead>
                   <tbody>
                     {categories.map((category) => (
-                      <tr className="text-center ">
+                      <tr className="text-center">
                         <td className="text-center">{category.id}</td>
                         <td className="text-center">{category.name}</td>
                         <td>
@@ -117,7 +117,7 @@ function AdminCategorys() {
                               setCategory(category);
                               // console.log("Soy el click", category.name);
                             }}
-                            className="fas fa-edit text-success "
+                            className="fas fa-edit text-success"
                           ></i>
                         </td>
                         <td>

@@ -56,7 +56,7 @@ const ClientUser = () => {
             </div>
             <div className="col-md-9">
               <div
-                className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}
+                className={`${tableStyles.font} table-responsive-md bg-white`}
               >
                 <Table striped bordered hover>
                   <thead>

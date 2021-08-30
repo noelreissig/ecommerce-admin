@@ -4,6 +4,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
+import ToastProducto from "../../ToastProducto/ToastProducto";
+
 function AdminCreateProduct({
   product,
   showCreate,
@@ -12,6 +14,7 @@ function AdminCreateProduct({
 }) {
   const { token } = useSelector((state) => state.authReducer);
   const [categories, setCategories] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     async function getCategories() {
@@ -40,12 +43,14 @@ function AdminCreateProduct({
     });
 
     setRefresh(true);
+    setShow(true);
   }
 
   const handleClose = () => setShowCreate(false);
 
   return (
     <>
+      <ToastProducto show={show} setShow={setShow} />
       <Modal size="lg" show={showCreate} onHide={handleClose}>
         <Modal.Header closeButton className="btn btn-white">
           <Modal.Title>Ingresar Nuevo Producto</Modal.Title>
