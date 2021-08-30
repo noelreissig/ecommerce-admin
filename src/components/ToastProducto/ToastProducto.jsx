@@ -4,16 +4,16 @@ import { Toast, Row, Col, ToastContainer } from "react-bootstrap";
 const ToastProducto = ({ show, setShow }) => {
   return (
     <div className="">
-      <ToastContainer position="top-center" style={{ marginTop: "65px" }}>
+      <ToastContainer position="top-center" style={{ marginTop: "35px" }}>
         <Toast
           onClose={() => setShow(false)}
           show={show}
-          delay={2000}
+          delay={3000}
           bg="success"
           autohide
         >
           <Toast.Body className="text-light text-center">
-            Elemento Añadido!
+            Acción realizada exitosamente!
           </Toast.Body>
         </Toast>
       </ToastContainer>
