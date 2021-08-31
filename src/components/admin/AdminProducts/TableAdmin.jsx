@@ -39,6 +39,7 @@ const TableAdmin = ({ products, setRefresh }) => {
     setProductsList((products) =>
       products.filter((product) => product.id !== id)
     );
+    setRefresh(true);
   }
 
   return (
