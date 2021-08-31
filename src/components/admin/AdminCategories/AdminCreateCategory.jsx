@@ -3,12 +3,15 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import ToastProducto from "../../ToastProducto/ToastProducto";
 
 function AdminCreateCategory({
   newCategory,
   showCreate,
   setShowCreate,
   setRefresh,
+  setShowOk,
+  showOk,
 }) {
   const { token } = useSelector((state) => state.authReducer);
 
@@ -27,6 +30,7 @@ function AdminCreateCategory({
     });
 
     setRefresh(true);
+    setShowOk(true);
   }
 
   const handleClose = () => setShowCreate(false);
