@@ -3,11 +3,13 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import ToastProducto from "../../ToastProducto/ToastProducto";
 
 function AdminEditCategory({ category, show, setShow, setRefresh }) {
   const { token } = useSelector((state) => state.authReducer);
   const [editCategory, setEditCategory] = useState(category.name);
   const [imgEditCategory, setImgEditCategory] = useState(category.photo_url);
+
   const handleClose = () => setShow(false);
 
   async function handleUpdate(ev) {

@@ -9,11 +9,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AdminEditCategory from "./AdminEditCategory";
 import AdminCreateCategory from "./AdminCreateCategory";
+import ToastCannotDeleteCategory from "../../ToastCannotDeleteCategory/ToastCannotDeleteCategory";
+import ToastProducto from "../../ToastProducto/ToastProducto";
 
 function AdminCategorys() {
   const { token } = useSelector((state) => state.authReducer);
   const [categories, setCategories] = useState([]);
   const [show, setShow] = useState(false);
+  const [showOk, setShowOk] = useState(false);
+  const [showCannotDelete, setShowCannotDelete] = useState(false);
+
   const [refresh, setRefresh] = useState(false);
   const [category, setCategory] = useState({});
 
@@ -46,14 +51,22 @@ function AdminCategorys() {
 
   // Eliminar categoría
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:3001/api/category/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setCategories((categories) =>
-      categories.filter((category) => category.id !== id)
-    );
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/category/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setCategories((categories) =>
+        categories.filter((category) => category.id !== id)
+      );
+      setShowOk(true);
+    } catch (error) {
+      setShowCannotDelete(true);
+    }
   }
 
   return (
@@ -85,6 +98,8 @@ function AdminCategorys() {
               showCreate={showCreate}
               setShowCreate={setShowCreate}
               setRefresh={setRefresh}
+              showOk={showOk}
+              setShowOk={setShowOk}
             />
           </div>
 
@@ -138,9 +153,16 @@ function AdminCategorys() {
                       setShow={setShow}
                       setRefresh={setRefresh}
                       key={category.name}
+                      showOk={showOk}
+                      setShowOk={setShowOk}
                     />
                   </tbody>
                 </Table>
+                <ToastProducto show={showOk} setShow={setShowOk} />
+                <ToastCannotDeleteCategory
+                  show={showCannotDelete}
+                  setShow={setShowCannotDelete}
+                />
               </div>
             </div>
           </div>
