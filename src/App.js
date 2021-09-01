@@ -23,13 +23,14 @@ function App() {
 					</Route>
 					{/* <PrivateRoute exact path="/login" component={Login} /> */}
 					<Route exact path="/login" component={Login} />
-					<Route exact path="/admin" component={Admin} />
-					<Route path="/admin/categorias" component={AdminCategorys} />
-					<Route path="/admin/productos" component={AdminProducts} />
-					<Route path="/admin/ordenes" component={AdminOrder} />
-					<Route path="/admin/clients" component={ClientUser} />
-					<Route path="/admin/users" component={AdminUser} />
-					<Route
+					<PrivateRoute exact path="/admin" component={Admin} />
+					<PrivateRoute path="/admin/categorias" component={AdminCategorys} />
+					<PrivateRoute path="/admin/productos" component={AdminProducts} />
+					<PrivateRoute path="/admin/ordenes" component={AdminOrder} />
+					<PrivateRoute path="/admin/clients" component={ClientUser} />
+					{/* <Route path="/admin/users" component={AdminUser} /> */}
+					<PrivateRoute path="/admin/users" component={AdminUser} />
+					<PrivateRoute
 						path="/admin/categorias/editar"
 						component={AdminEditCategory}
 					/>
