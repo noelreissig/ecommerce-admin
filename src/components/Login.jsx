@@ -27,8 +27,7 @@ function Login() {
       >
         <div className="text-center">
           <h2 className={`${loginStyles.login}`}>
-            Iniciar sesión en <br />
-            Admin de Deco-Hack
+            Iniciar sesión Admin Deco-Hack
           </h2>
         </div>
         <form

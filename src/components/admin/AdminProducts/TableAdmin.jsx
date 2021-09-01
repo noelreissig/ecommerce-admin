@@ -72,9 +72,9 @@ const TableAdmin = ({ products, setRefresh }) => {
                     onClick={() => handleStared(product.id, !product.stared)}
                   >
                     {product.stared === false ? (
-                      <i className="far fa-heart text-danger"></i>
+                      <i className="far fa-star text-primary"></i>
                     ) : (
-                      <i className="fas fa-heart text-danger"></i>
+                      <i className="fas fa-star text-primary"></i>
                     )}
                   </button>
                 </td>
