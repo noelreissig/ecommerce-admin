@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import ToastProducto from "../../ToastProducto/ToastProducto";
 
-function AdminEditCategory({ category, show, setShow, setRefresh }) {
+function AdminEditUser({ user, show, setShow, setRefresh }) {
 	const { token } = useSelector((state) => state.authReducer);
-	const [editCategory, setEditCategory] = useState(category.name);
-	const [imgEditCategory, setImgEditCategory] = useState(category.photo_url);
+	const [firstname, setFirstName] = useState(user.firstname);
+	const [lastname, setLastName] = useState(user.lastname);
+	const [email, setEmail] = useState(user.email);
 
 	const handleClose = () => setShow(false);
 
 	async function handleUpdate(ev) {
 		ev.preventDefault();
-		const formData = new FormData(ev.target);
+		const data = {
+			firstname: firstname,
+			lastname: lastname,
+			email: email,
+		};
 		await axios({
 			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/category/${category.id}`,
-			data: formData,
+			url: `${process.env.REACT_APP_API_URL}/api/admin/${user.id}`,
+			data: data,
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -42,21 +47,29 @@ function AdminEditCategory({ category, show, setShow, setRefresh }) {
 							type="text"
 							name="name"
 							required
-							value={editCategory}
-							onChange={(ev) => setEditCategory(ev.target.value)}
+							value={firstname}
+							onChange={(ev) => setFirstName(ev.target.value)}
 						/>
-						<Form.Label className="my-1 mx-3">Imágen</Form.Label>
-						<img
-							className="img-fluid w-25 mb-2 d-inline"
-							src={`${process.env.REACT_APP_SUPABASE_URL_CAT}${category.photo_url}`}
-							alt={category.name}
+						<Form.Label className="">Apellido</Form.Label>
+						<Form.Control
+							className="mb-4"
+							size="sm"
+							type="text"
+							name="name"
+							required
+							value={lastname}
+							onChange={(ev) => setLastName(ev.target.value)}
 						/>
-						<input
-							className="form-control my-1 mx-3 w-auto mb-4"
-							type="file"
-							name="photo_url"
-							accept="image/png, image/jpg, image/svg, image/webp"
-						></input>
+						<Form.Label className="">Email</Form.Label>
+						<Form.Control
+							className="mb-4"
+							size="sm"
+							type="email"
+							name="name"
+							required
+							value={email}
+							onChange={(ev) => setEmail(ev.target.value)}
+						/>
 					</Form.Group>
 
 					<Modal.Footer>
@@ -73,4 +86,4 @@ function AdminEditCategory({ category, show, setShow, setRefresh }) {
 	);
 }
 
-export default AdminEditCategory;
+export default AdminEditUser;
