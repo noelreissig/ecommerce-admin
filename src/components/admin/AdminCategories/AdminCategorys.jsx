@@ -38,7 +38,7 @@ function AdminCategorys() {
     const getCategories = async () => {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3001/api/category`,
+        url: `${process.env.REACT_APP_API_URL}/api/category`,
         headers: {
           Authorization: `Bearer ${token}`,
         },

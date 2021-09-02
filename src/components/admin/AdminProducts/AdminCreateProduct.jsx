@@ -20,7 +20,7 @@ function AdminCreateProduct({
     async function getCategories() {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3001/api/category`,
+        url: `${process.env.REACT_APP_API_URL}/api/category`,
       });
       setCategories(response.data);
     }
@@ -34,7 +34,7 @@ function AdminCreateProduct({
 
     const response = await axios({
       method: "post",
-      url: `http://localhost:3001/api/product`,
+      url: `${process.env.REACT_APP_API_URL}/api/product`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",

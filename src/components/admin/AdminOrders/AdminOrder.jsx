@@ -16,11 +16,14 @@ const AdminOrder = () => {
 
   useEffect(() => {
     const getOrders = async () => {
-      const response = await axios.get(`http://localhost:3001/api/order`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/order`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setOrders(response.data);
     };
@@ -28,7 +31,7 @@ const AdminOrder = () => {
   }, []);
 
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:3001/api/users/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

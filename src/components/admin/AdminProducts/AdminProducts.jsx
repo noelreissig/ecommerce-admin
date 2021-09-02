@@ -22,7 +22,9 @@ function AdminProducts() {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await axios.get(`http://localhost:3001/api/product`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/product`
+      );
       setProducts(response.data);
       setRefresh(false);
     };

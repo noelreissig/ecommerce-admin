@@ -21,7 +21,7 @@ function AdminCreateCategory({
     console.log("Soy el create");
     const response = await axios({
       method: "post",
-      url: `http://localhost:3001/api/category`,
+      url: `${process.env.REACT_APP_API_URL}/api/category`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",

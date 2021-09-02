@@ -17,22 +17,28 @@ const ClientUser = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await axios.get(`http://localhost:3001/api/users`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/users`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setClients(response.data);
     };
     getUsers();
   }, []);
 
   async function handleDelete() {
-    await axios.delete(`http://localhost:3001/api/users/${clientId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await axios.delete(
+      `${process.env.REACT_APP_API_URL}/api/users/${clientId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
   }
 
   return (

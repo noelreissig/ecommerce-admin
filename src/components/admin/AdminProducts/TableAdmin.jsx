@@ -21,7 +21,7 @@ const TableAdmin = ({ products, setRefresh }) => {
     formData.append("stared", isStared);
     await axios({
       method: "patch",
-      url: `http://localhost:3001/api/product/${id}`,
+      url: `${process.env.REACT_APP_API_URL}/api/product/${id}`,
       data: formData,
       headers: {
         Authorization: `Bearer ${token}`,
@@ -31,7 +31,7 @@ const TableAdmin = ({ products, setRefresh }) => {
   }
 
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:3001/api/product/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/product/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

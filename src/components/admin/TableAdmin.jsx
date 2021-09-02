@@ -18,7 +18,7 @@ const TableAdmin = ({ products, setRefresh }) => {
 
   async function handleStared(id, isStared) {
     await axios.patch(
-      `http://localhost:3001/api/product/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/product/${id}`,
       { stared: isStared ? 1 : 0 },
       {
         headers: {
@@ -30,7 +30,7 @@ const TableAdmin = ({ products, setRefresh }) => {
   }
 
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:3001/api/product/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/product/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
