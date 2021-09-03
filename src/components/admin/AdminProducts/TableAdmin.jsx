@@ -36,7 +36,7 @@ const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
 	}
 
 	return (
-		<div className={`${tableStyles.font} pb-2 table-responsive-md bg-white`}>
+		<div className={`${tableStyles.font}  table-responsive-md bg-white`}>
 			<Table striped bordered hover>
 				<thead>
 					<tr className="text-center">
