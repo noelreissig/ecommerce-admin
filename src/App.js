@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
@@ -21,7 +20,7 @@ function App() {
 					<Route exact path="/">
 						<Redirect to="/login" />
 					</Route>
-					{/* <PrivateRoute exact path="/login" component={Login} /> */}
+
 					<Route exact path="/login" component={Login} />
 					<PrivateRoute exact path="/admin" component={Admin} />
 					<PrivateRoute path="/admin/categorias" component={AdminCategorys} />
