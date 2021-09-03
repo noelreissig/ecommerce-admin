@@ -19,5 +19,6 @@
   width: 100%;
   position: relative;
   top: 0;
+  overflow: auto;
   /* z-index: -1; */
 }

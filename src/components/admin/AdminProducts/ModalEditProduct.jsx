@@ -4,7 +4,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-function EditProduct({ product, show, setShow, setRefresh }) {
+function EditProduct({
+  product,
+  show,
+  setShow,
+  showOk,
+  setShowOk,
+  setRefresh,
+}) {
   const { token } = useSelector((state) => state.authReducer);
   const [editCategory, setEditCategory] = useState(product.categoryId);
   const [categories, setCategories] = useState([]);
@@ -38,6 +45,7 @@ function EditProduct({ product, show, setShow, setRefresh }) {
       },
     });
     setRefresh(true);
+    setShowOk(true);
     handleClose();
   }
 

@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AdminCreateProduct from "./AdminCreateProduct";
+import ToastProducto from "../../ToastProducto/ToastProducto";
 
 function AdminProducts() {
   const { token } = useSelector((state) => state.authReducer);
   const [products, setProducts] = useState([]);
-  const [show, setShow] = useState(false);
+  const [showOk, setShowOk] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [product, setProduct] = useState({});
   const [newProduct, setNewProduct] = useState({});
@@ -31,13 +32,8 @@ function AdminProducts() {
     getProducts();
   }, [refresh]);
 
-  //para que cree un nuevo producto
-  //dentro del handleCreate
-  //llamada al back para .store
-  //pasar todos los datos en la data
-
   return (
-    <div className={adminStyles.imgBackground}>
+    <div className={`${adminStyles.imgBackground}`}>
       <div className="container min-vh-100">
         <div className="row">
           <div className="col text-center">
@@ -72,7 +68,13 @@ function AdminProducts() {
             <SiderAdmin />
           </div>
           <div className="col-md-9 text-center">
-            <TableAdmin products={products} setRefresh={setRefresh} />
+            <TableAdmin
+              products={products}
+              setRefresh={setRefresh}
+              showOk={showOk}
+              setShowOk={setShowOk}
+            />
+            <ToastProducto show={showOk} setShow={setShowOk} />
           </div>
         </div>
       </div>

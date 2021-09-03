@@ -53,7 +53,7 @@ function AdminCategorys() {
   async function handleDelete(id) {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/category/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/category/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

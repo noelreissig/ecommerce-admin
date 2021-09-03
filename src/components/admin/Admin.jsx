@@ -5,7 +5,7 @@ import adminStyles from "./admin.module.css";
 function Admin() {
   return (
     <div>
-      <div className={adminStyles.imgBackground}>
+      <div className={`${adminStyles.imgBackground} overflow-auto`}>
         <div className="container min-vh-100">
           <h2 className={`${adminStyles.admin} text-center text-white`}>
             Administración Deco-Hack

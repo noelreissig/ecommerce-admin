@@ -2,23 +2,18 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import ToastProducto from "../../ToastProducto/ToastProducto";
 
 function AdminCreateCategory({
-  newCategory,
   showCreate,
   setShowCreate,
   setRefresh,
   setShowOk,
-  showOk,
 }) {
   const { token } = useSelector((state) => state.authReducer);
 
   async function handleCreate(ev) {
     ev.preventDefault();
     const formData = new FormData(ev.target);
-    console.log("Soy el create");
     const response = await axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}/api/category`,
@@ -28,7 +23,6 @@ function AdminCreateCategory({
         Authorization: `Bearer ${token}`,
       },
     });
-
     setRefresh(true);
     setShowOk(true);
   }

@@ -5,8 +5,9 @@ import tableStyles from "./tableStyles.module.css";
 import ModalEditProduct from "./ModalEditProduct";
 import axios from "axios";
 import { useSelector } from "react-redux";
+// import ToastProducto from "../../ToastProducto/ToastProducto";
 
-const TableAdmin = ({ products, setRefresh }) => {
+const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
   const { token } = useSelector((state) => state.authReducer);
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState({});
@@ -99,11 +100,14 @@ const TableAdmin = ({ products, setRefresh }) => {
             ))}
         </tbody>
       </Table>
+      {/* <ToastProducto show={showOk} setShow={setShowOk} /> */}
       <ModalEditProduct
         key={product.id}
         product={product}
         show={show}
         setShow={setShow}
+        showOk={showOk}
+        setShowOk={setShowOk}
         setRefresh={setRefresh}
       />
     </div>
