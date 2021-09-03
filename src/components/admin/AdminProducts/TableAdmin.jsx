@@ -1,20 +1,25 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Table } from "react-bootstrap";
 import tableStyles from "./tableStyles.module.css";
 import ModalEditProduct from "./ModalEditProduct";
 import axios from "axios";
 import { useSelector } from "react-redux";
-// import ToastProducto from "../../ToastProducto/ToastProducto";
+import ConfirmDelete from "../../ConfirmDelete/ConfirmDelete";
 
 const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
   const { token } = useSelector((state) => state.authReducer);
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [product, setProduct] = useState({});
-  const [productsList, setProductsList] = useState([]);
+  // const [productsList, setProductsList] = useState([]);
 
   const handleShow = () => {
     setShow(true);
+  };
+
+  const handleShowConfirmDelete = () => {
+    setShowDelete(true);
   };
 
   async function handleStared(id, isStared) {
@@ -28,18 +33,6 @@ const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    setRefresh(true);
-  }
-
-  async function handleDelete(id) {
-    await axios.delete(`${process.env.REACT_APP_API_URL}/api/product/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setProductsList((products) =>
-      products.filter((product) => product.id !== id)
-    );
     setRefresh(true);
   }
 
@@ -91,7 +84,8 @@ const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
                 <td>
                   <i
                     onClick={() => {
-                      handleDelete(product.id);
+                      handleShowConfirmDelete();
+                      setProduct(product);
                     }}
                     className="far fa-trash-alt btn text-danger"
                   ></i>
@@ -101,6 +95,13 @@ const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
         </tbody>
       </Table>
       {/* <ToastProducto show={showOk} setShow={setShowOk} /> */}
+      <ConfirmDelete
+        key={product.id}
+        showDelete={showDelete}
+        setShowDelete={setShowDelete}
+        setRefresh={setRefresh}
+        product={product}
+      />
       <ModalEditProduct
         key={product.id}
         product={product}

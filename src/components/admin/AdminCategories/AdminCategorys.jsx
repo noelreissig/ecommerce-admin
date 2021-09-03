@@ -15,8 +15,8 @@ import ToastProducto from "../../ToastProducto/ToastProducto";
 function AdminCategorys() {
   const { token } = useSelector((state) => state.authReducer);
   const [categories, setCategories] = useState([]);
-  const [show, setShow] = useState(false);
-  const [showOk, setShowOk] = useState(false);
+  const [show, setShow] = useState(false); //prende modal
+  const [showOk, setShowOk] = useState(false); //prende toasty
   const [showCannotDelete, setShowCannotDelete] = useState(false);
 
   const [refresh, setRefresh] = useState(false);
