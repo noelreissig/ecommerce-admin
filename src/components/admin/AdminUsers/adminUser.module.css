@@ -1,23 +1,24 @@
 .admin {
-  padding-top: 5rem;
-  padding-bottom: 1rem;
-  padding-left: 0;
+	padding-top: 5rem;
+	padding-bottom: 1rem;
+	padding-left: 0;
 }
 .imgBackground {
-  background-image: linear-gradient(
-      -45deg,
-      rgba(130, 130, 130, 0.1516981792717087) 0%,
-      rgba(0, 0, 0, 0.85) 100%
-    ),
-    url(../../../fondo.jpg);
+	background-image: linear-gradient(
+			-45deg,
+			rgba(130, 130, 130, 0.1516981792717087) 0%,
+			rgba(0, 0, 0, 0.85) 100%
+		),
+		url(../../../fondo.jpg);
 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  top: 0;
-  /* z-index: -1; */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	overflow: auto;
+	top: 0;
+	/* z-index: -1; */
 }

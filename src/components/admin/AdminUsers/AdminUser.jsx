@@ -5,7 +5,7 @@ import adminUser from "./adminUser.module.css";
 import tableStyles from "../tableStyles.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ToastProducto from "../../ToastProducto/ToastProducto";
 import AdminEditUser from "./AdminEditUser";
@@ -15,7 +15,6 @@ const AdminUser = () => {
 	const [refresh, setRefresh] = useState(false);
 	const [user, setUser] = useState({});
 	const [users, setUsers] = useState([]);
-	const [userId, setUserId] = useState("");
 
 	const [show, setShow] = useState(false);
 	const [showOk, setShowOk] = useState(false);
@@ -79,11 +78,9 @@ const AdminUser = () => {
 							Agregar Admin
 						</button>
 						<AdminCreateUser
-							newUser={newUser}
 							showCreate={showCreate}
 							setShowCreate={setShowCreate}
 							setRefresh={setRefresh}
-							showOk={showOk}
 							setShowOk={setShowOk}
 						/>
 					</div>

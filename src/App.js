@@ -27,7 +27,6 @@ function App() {
 					<PrivateRoute path="/admin/productos" component={AdminProducts} />
 					<PrivateRoute path="/admin/ordenes" component={AdminOrder} />
 					<PrivateRoute path="/admin/clients" component={ClientUser} />
-					{/* <Route path="/admin/users" component={AdminUser} /> */}
 					<PrivateRoute path="/admin/users" component={AdminUser} />
 					<PrivateRoute
 						path="/admin/categorias/editar"

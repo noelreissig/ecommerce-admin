@@ -122,7 +122,6 @@ const AdminOrder = () => {
 													<td>
 														<i
 															onClick={() => {
-																// setUserId(order.user.id);
 																handleDelete(order.id);
 															}}
 															className="far fa-trash-alt btn text-danger"
