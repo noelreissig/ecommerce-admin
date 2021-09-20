@@ -114,7 +114,7 @@ function AdminCategorys() {
                   <thead>
                     <tr className="text-center">
                       <th>Id</th>
-                      <th>Categorias</th>
+                      <th>Categorías</th>
                       <th>Editar</th>
                       <th>Borrar</th>
                     </tr>

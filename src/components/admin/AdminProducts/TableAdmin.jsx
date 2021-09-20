@@ -42,7 +42,7 @@ const TableAdmin = ({ products, setRefresh, showOk, setShowOk }) => {
           <tr className="text-center">
             <th>Id</th>
             <th>Nombre</th>
-            <th>Categoria</th>
+            <th>Categoría</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Destacado</th>
