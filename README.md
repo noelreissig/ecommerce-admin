@@ -1,3 +1,8 @@
+### Note: This e-commerce is part of the final project of a JavaScript bootcamp I took on 2021.
+#### Even tough it looks reasonable good we can recognize now, many ways for improvement.
+
+
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
